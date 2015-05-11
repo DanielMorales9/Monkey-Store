@@ -51,6 +51,7 @@ public class Product {
 		this.description = description;
 		this.code = code;
 		this.price = price;
+		this.creationDate = new Date();
 		this.orders = new ArrayList<Order>();
 	}
 
