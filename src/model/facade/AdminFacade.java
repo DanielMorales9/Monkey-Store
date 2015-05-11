@@ -1,4 +1,4 @@
-package controller;
+package model.facade;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,7 +14,8 @@ public class AdminFacade {
 	@PersistenceContext(unitName="unit-project")
 	private EntityManager em;
 	
-//	private Admin currentAdmin;
+// è il controller che si occupa della sessione per ora, poi chiediamo al prof
+//	private Admin currentAdmin; 
 	
 	public Product createNewProduct(String name, String description, String code,
 			Float price/*, Admin currentAdmin*/) {

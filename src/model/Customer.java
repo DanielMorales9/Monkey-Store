@@ -28,7 +28,7 @@ public class Customer {
 	@JoinColumn(nullable = false)
 	private String lastName;
 	
-	@JoinColumn(nullable = false)
+	@JoinColumn(nullable = false, unique=true)
 	private String email;
 	
 	@JoinColumn(nullable = false)

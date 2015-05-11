@@ -3,8 +3,8 @@ package controller;
 import java.util.Date;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import exception.InvalidEmailException;
 import exception.InvalidPasswordException;
@@ -12,6 +12,7 @@ import model.Customer;
 import model.facade.CustomerFacade;
 
 @ManagedBean
+@SessionScoped
 public class LoginCustomerController {
 	
 	private String email;
@@ -27,6 +28,7 @@ public class LoginCustomerController {
 	private Customer customer;
 
 	private String loginError;
+	private String registerError;
 	
 	public String loginCustomer() {
 		try {
@@ -36,11 +38,19 @@ public class LoginCustomerController {
 			loginError = "Email or Password is not valid";
 			return "loginCustomer";
 		}
+		catch (Exception e) {
+			return "error";
+		}
 		return "customerArea";
 	}
 	
 	public String registerNewCustomer() {
+		try {
 		customer = facade.createNewCustomer(email, password, firstName, lastName, bDay);
+		} catch (Exception e) {
+			registerError ="Email already registered";
+			return "signupCustomer";
+		}
 		return "customerArea";
 	}
 
@@ -98,6 +108,14 @@ public class LoginCustomerController {
 
 	public void setbDay(Date bDay) {
 		this.bDay = bDay;
+	}
+
+	public String getRegisterError() {
+		return registerError;
+	}
+
+	public void setRegisterError(String registerError) {
+		this.registerError = registerError;
 	}
 	
 }

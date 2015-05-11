@@ -4,6 +4,8 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 
+import model.facade.AdminFacade;
+
 @ManagedBean
 @SessionScoped
 public class ProductController {

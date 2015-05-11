@@ -11,7 +11,7 @@
 <title>Register</title>
 	</head>
 	<body>
-	<h1>Register Customer</h1>
+		<h1>Register Customer</h1>
 		<h:form>
 			<div>
 				Firstname:
@@ -23,7 +23,8 @@
 			<div>
 				Lastname:
 				<h:inputText value="#{loginCustomerController.lastName}"
-					required="true" requiredMessage="Lastname is mandatory" id="lastName" />
+					required="true" requiredMessage="Lastname is mandatory"
+					id="lastName" />
 				<h:message for="lastName" />
 			</div>
 			<div>
@@ -50,6 +51,9 @@
 					required="true" requiredMessage="Password is mandatory"
 					id="password" />
 				<h:message for="password" />
+			</div>
+			<div>
+				<h:outputText value="#{loginCustomerController.registerError}" />
 			</div>
 			<div>
 				<h:commandButton value="Register"
