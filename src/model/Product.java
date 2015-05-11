@@ -22,7 +22,8 @@ public class Product {
     private Long id;
 
 	
-	@OneToMany(mappedBy="product_id", cascade = {CascadeType.MERGE})
+	@OneToMany( cascade = {CascadeType.MERGE})
+	@JoinColumn(name="product_id")
 	private List<Order> orders;
 	
 	@JoinColumn(nullable = false)

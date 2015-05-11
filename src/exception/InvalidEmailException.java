@@ -1,4 +1,4 @@
-package controller;
+package exception;
 
 public class InvalidEmailException extends Exception {
 

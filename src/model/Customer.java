@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import exception.InvalidPasswordException;
+
 @Entity
 public class Customer {
 
@@ -26,7 +28,7 @@ public class Customer {
 	@JoinColumn(nullable = false)
 	private String lastName;
 	
-	@JoinColumn(nullable = false, unique=true)
+	@JoinColumn(nullable = false)
 	private String email;
 	
 	@JoinColumn(nullable = false)
@@ -112,6 +114,12 @@ public class Customer {
 
 	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
+	}
+
+	public void checkPassword(String password) throws InvalidPasswordException {
+		if (!this.password.equals(password)) {
+			throw new InvalidPasswordException();
+		}
 	}
 
 

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderLine {
@@ -14,6 +15,7 @@ public class OrderLine {
     private Long id;
 	
 	@JoinColumn(nullable= false)
+	@ManyToOne
 	private Product product;
 
 	@JoinColumn(nullable = false)
