@@ -30,11 +30,11 @@
 					id="password" />
 				<h:message for="password" />
 			</div>
+			<div><h:outputText value="#{loginCustomerController.loginError}"/></div>
 			<div>
 				<h:commandButton action="#{loginCustomerController.loginCustomer}"
 					value="Submit"></h:commandButton>
 			</div>
-
 		</h:form>
 	</body>
 </f:view>
