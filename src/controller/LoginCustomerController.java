@@ -14,25 +14,25 @@ import model.facade.CustomerFacade;
 @ManagedBean
 @SessionScoped
 public class LoginCustomerController {
-	
+
 	private String email;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private Date bDay;
-	
-	
+
+
 	@EJB(beanName="cFacade")
 	private CustomerFacade facade;
-	
+
 	private Customer customer;
 
 	private String loginError;
 	private String registerError;
-	
+
 	public String loginCustomer() {
 		try {
-		customer = facade.loginCustomer(email, password);
+			customer = facade.loginCustomer(email, password);
 		}
 		catch (InvalidPasswordException | InvalidEmailException e) {
 			loginError = "Email or Password is not valid";
@@ -43,10 +43,10 @@ public class LoginCustomerController {
 		}
 		return "customerArea";
 	}
-	
+
 	public String registerNewCustomer() {
 		try {
-		customer = facade.createNewCustomer(email, password, firstName, lastName, bDay);
+			customer = facade.createNewCustomer(email, password, firstName, lastName, bDay);
 		} catch (Exception e) {
 			registerError ="Email already registered";
 			return "signupCustomer";
@@ -69,19 +69,19 @@ public class LoginCustomerController {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Customer getCustomer() {
 		return customer;
 	}
-	
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
+
 	public String getLoginError() {
 		return loginError;
 	}
-	
+
 	public void setLoginError(String loginError) {
 		this.loginError = loginError;
 	}
@@ -117,5 +117,5 @@ public class LoginCustomerController {
 	public void setRegisterError(String registerError) {
 		this.registerError = registerError;
 	}
-	
+
 }
