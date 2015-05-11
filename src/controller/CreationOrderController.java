@@ -27,16 +27,16 @@ public class CreationOrderController {
 	
 	public String createNewOrder(Customer customer) {
 		products = customerFacade.createNewOrder(customer);
-		return "products";
+		return "chooseProducts";
 	}
 	
 	public String findProductById(Long id) {
 		setProduct(customerFacade.getProduct(id));
-		return "product";
+		return "productDetails";
 	}
 	
 	public String addNewProductToOrder(Long id) {
-		
+		//TODO
 		return "products";
 	}
 
