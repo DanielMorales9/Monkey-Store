@@ -115,7 +115,15 @@ public class Customer {
 	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void checkPassword(String password) throws InvalidPasswordException {
 		if (!this.password.equals(password)) {
 			throw new InvalidPasswordException();

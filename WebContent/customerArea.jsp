@@ -17,11 +17,13 @@
 		<div>E-mail: ${loginCustomerController.customer.email}</div>
 		<div>Birthday: ${loginCustomerController.customer.birthDay}</div>
 		<div>
-			<h:commandButton
-				action="#{creationOrderController.createNewOrder}"
-				value="Create Order">
-				<f:param name="customer" value="#{loginCustomerController.customer}" />
-			</h:commandButton>
+			<h:form>
+				<h:commandButton value="Create Order"
+					action="#{orderController.createNewOrder}">
+					<f:param value="#{loginCustomerController.customer.id}"
+						name="idCustomer"></f:param>
+				</h:commandButton>
+			</h:form>
 		</div>
 	</body>
 </f:view>

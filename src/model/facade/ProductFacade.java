@@ -15,12 +15,12 @@ public class ProductFacade {
     private EntityManager em;
     
 	public Product createProduct(String name, String code, Float price, String description) {
-		Product product = new Product(name, code, description, price);
+		Product product = new Product(name, description, code, price);
 		em.persist(product);
 		return product;
 	}
 	
-	public Product getProduct(Long id) {
+	public Product findProductById(Long id) {
 	    Product product = em.find(Product.class, id);
 		return product;
 	}

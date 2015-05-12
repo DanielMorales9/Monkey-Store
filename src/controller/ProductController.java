@@ -3,7 +3,6 @@ package controller;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -11,7 +10,6 @@ import model.Product;
 import model.facade.AdminFacade;
 
 @ManagedBean
-@SessionScoped
 public class ProductController {
 	
 	@EJB(beanName="adminFacade")
@@ -42,7 +40,7 @@ public class ProductController {
 	}
 
 	public String findProduct() {
-		this.product = productFacade.getProduct(id);
+		this.product = productFacade.findProductById(id);
 		return "product";
 	}
 

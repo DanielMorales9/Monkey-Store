@@ -11,41 +11,47 @@ import model.Product;
 import model.facade.CustomerFacade;
 
 @ManagedBean
-public class CreationOrderController {
+public class OrderController {
+
+	@EJB(beanName="cFacade")
+	private CustomerFacade facade;
 	
+	private Customer customer;
+	@ManagedProperty(value="#{param.idCustomer}")
+	private Long idCustomer;
+	
+	private Integer quantity;
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	@ManagedProperty(value="#{param.customer}")
-	private Customer customer;
 	
-	@EJB(beanName="cFacade")
-	private CustomerFacade customerFacade;
-
 	private List<Product> products;
-	private Product product;
-	private Integer quantity;
 	
-	public String createNewOrder(Customer customer) {
-		products = customerFacade.createNewOrder(customer);
+	public String createNewOrder() {
+		customer = facade.findCustomerById(idCustomer);
+		setProducts(facade.createNewOrder(customer));
 		return "chooseProducts";
 	}
 	
-	public String findProductById(Long id) {
-		setProduct(customerFacade.getProduct(id));
-		return "productDetails";
+	public String addNewProductToOrder() {
+		facade.addProductToOrder(id, quantity);
+		products = facade.getAllProducts();
+		return "chooseProducts";
 	}
 	
-	public String addNewProductToOrder(Long id) {
-		//TODO
-		return "products";
-	}
-
 	public Customer getCustomer() {
 		return customer;
 	}
-
+	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	
+	public Long getIdCustomer() {
+		return idCustomer;
+	}
+	
+	public void setIdCustomer(Long idCustomer) {
+		this.idCustomer = idCustomer;
 	}
 
 	public List<Product> getProducts() {
@@ -56,14 +62,6 @@ public class CreationOrderController {
 		this.products = products;
 	}
 
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
 	public Integer getQuantity() {
 		return quantity;
 	}
@@ -71,5 +69,12 @@ public class CreationOrderController {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

@@ -85,6 +85,10 @@ public class Order {
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
+
+	public void createOrderLine(Product product, Integer quantity) {
+		this.orderLines.add(new OrderLine(product, quantity));
+	}
 	
 	
 	
