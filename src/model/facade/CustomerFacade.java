@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import model.Customer;
 
+
 @Stateless(name="cFacade")
 public class CustomerFacade {
 
@@ -39,22 +40,16 @@ public class CustomerFacade {
 		return this.em.find(Customer.class, idCustomer);
 	}
 
-	public List<Customer> listCustomers() {
+	public void removeCustomer(Customer customer) {
+		this.em.remove(customer);
+	}
+
+	public List<Customer> listCustomers() {	
 		CriteriaQuery<Customer> cq = em.getCriteriaBuilder().createQuery(Customer.class);
 		cq.select(cq.from(Customer.class));
 		List<Customer> customers = em.createQuery(cq).getResultList();
 		return customers;
 	}
-	
-	public Customer removeCustomerById(Long id) {
-		Customer customer = this.em.find(Customer.class, id);
-		this.em.remove(customer);
-		return customer;
-	}
-	
-	public Customer removeAdmin(Customer customer) {
-		this.em.remove(customer);
-		return customer;
-	}
+
 
 }

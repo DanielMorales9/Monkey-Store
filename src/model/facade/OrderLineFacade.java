@@ -30,9 +30,17 @@ public class OrderLineFacade {
 		return ol;
 	}
 	
-	public OrderLine removeOrderLines(OrderLine orderLine) {
-		this.em.remove(orderLine);
-		return orderLine;
+	public void removeOrderLine(Long orderId, Long orderLineId) {
+		OrderLine ol = this.em.find(OrderLine.class, orderLineId);
+		Order o = this.em.find(Order.class, orderId);
+		o.removeOrderLine(ol);
+		this.em.remove(ol);
+		this.em.merge(o);
+	}
+	
+	public OrderLine findOrderById(Long id) {
+		OrderLine ol = this.em.find(OrderLine.class, id);
+		return ol;
 	}
 	
 	

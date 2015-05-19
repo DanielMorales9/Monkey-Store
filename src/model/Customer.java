@@ -45,7 +45,7 @@ public class Customer {
 	@OneToMany(mappedBy="customer")
 	private List<Order> orders;
 	
-	@OneToOne(cascade={CascadeType.PERSIST})
+	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
 	private Address address;
 
 	public Customer() {

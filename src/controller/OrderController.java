@@ -28,7 +28,7 @@ public class OrderController {
 		Order order = orderFacade.createOrder(id);
 		id = order.getId();
 		products = productFacade.listProducts();
-		return "products";
+		return "chooseProducts";
 	}
 
 	public Long getId() {

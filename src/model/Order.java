@@ -27,8 +27,10 @@ public class Order {
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date creationDate;
 
+	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date evasionDate;
 
+	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date closingDate;
 
 	@ManyToOne
@@ -104,5 +106,8 @@ public class Order {
 		this.orderLines.add(ol);
 	}
 
+	public void removeOrderLine(OrderLine ol) {
+		this.orderLines.remove(ol);
+	}
 
 }
