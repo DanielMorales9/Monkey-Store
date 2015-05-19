@@ -16,7 +16,7 @@
 		<h:form>
 			<div>
 				Email:
-				<h:inputText value="#{loginCustomerController.email}"
+				<h:inputText value="#{loginCustomer.email}"
 					required="true" requiredMessage="Email is mandatory" id="email"
 					validatorMessage="Email is not valid">
 					<f:validateRegex pattern=".+@.+\\.[a-z]+" />
@@ -25,14 +25,14 @@
 			</div>
 			<div>
 				Password:
-				<h:inputSecret value="#{loginCustomerController.password}"
+				<h:inputSecret value="#{loginCustomer.password}"
 					required="true" requiredMessage="Password is mandatory"
 					id="password" />
 				<h:message for="password" />
 			</div>
-			<div><h:outputText value="#{loginCustomerController.loginError}"/></div>
+			<div><h:outputText value="#{loginCustomer.loginError}"/></div>
 			<div>
-				<h:commandButton action="#{loginCustomerController.loginCustomer}"
+				<h:commandButton action="#{loginCustomer.loginCustomer}"
 					value="Submit"></h:commandButton>
 			</div>
 		</h:form>

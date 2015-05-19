@@ -25,10 +25,22 @@ public class ProductFacade {
 		return product;
 	}
 	
-	public List<Product> getAllProducts() {
+	public List<Product> listProducts() {
         CriteriaQuery<Product> cq = em.getCriteriaBuilder().createQuery(Product.class);
         cq.select(cq.from(Product.class));
         List<Product> products = em.createQuery(cq).getResultList();
 		return products;
 	}
+	
+	public Product removeProduct(Product product) {
+		this.em.remove(product);
+		return product;
+	}
+	
+	public Product removeProductById(Long id) {
+		Product product = this.em.find(Product.class, id);
+		this.em.remove(product);
+		return product;
+	}
+	
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Products</title>
+<title>Confirm Order</title>
 </head>
 <body>
 	<f:view>
@@ -15,22 +15,22 @@
 				<tr>
 					<th>Name</th>
 					<th>Price</th>
+					<th>Quantity</th>
+
 				</tr>
-				<c:forEach var="product" items="${orderController.products}">
+				<c:forEach var="line" items="#{orderController.orderLines}">
 					<tr>
 						<td><h:commandLink
-								
-								value="#{product.name}">
-								<!--<f:param name="productId" value="#{product.id}" />
-								<f:param name="id" value="#{orderController.id}" />-->
+								action="#{orderController.findProductById}"
+								value="#{line.product.name}">
+								<f:param name="id" value="#{line.product.id}" />
 							</h:commandLink></td>
-						<td>${product.price}</td>
+						<td>${line.product.price}</td>
+						<td>${line.quantity}</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<div>
-			<h:commandButton value="End Order" action="#{orderController.createOrder}"></h:commandButton>
-			</div>
+			<div></div>
 		</h:form>
 
 	</f:view>

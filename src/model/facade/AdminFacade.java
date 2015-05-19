@@ -1,25 +1,61 @@
 package model.facade;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
 
-import model.Product;
+import model.Admin;
 
 
-//TODO x Daniel: spostala nel package opportuno
-@Stateless(name="adminFacade")
+@Stateless(name="aFacade")
 public class AdminFacade {
 	
 	@PersistenceContext(unitName="unit-project")
 	private EntityManager em;
 	
-// è il controller che si occupa della sessione per ora, poi chiediamo al prof
-//	private Admin currentAdmin; 
+	public Admin createAdmin(String email, String password) {
+		Admin admin = new Admin(email, password);
+		this.em.persist(admin);
+		return admin;
+	}
 	
-	public Product createNewProduct(String name, String description, String code,
-			Float price/*, Admin currentAdmin*/) {
-		Product p = new Product(name, description, code, price/*, currentAdmin*/);
-		return p;
+	public List<Admin> listAdmin() {
+		CriteriaQuery<Admin> cq = em.getCriteriaBuilder().createQuery(Admin.class);
+		cq.select(cq.from(Admin.class));
+		List<Admin> adminList = em.createQuery(cq).getResultList();
+		return adminList;
+	}
+	
+	public Admin retrieveAdminByEmailAndPassword(String email, String password)
+			throws Exception {
+		TypedQuery<Admin> query = em.createQuery(
+				"SELECT a FROM Admin a where a.email =:email", Admin.class);
+		query.setParameter("email", email);
+		Admin admin = query.getSingleResult();
+		if (admin == null) {
+			throw new Exception();
+		}
+		admin.checkPassword(password);
+		return admin;	
+	}
+	
+	public Admin findAdminById(Long id) {
+		Admin admin = this.em.find(Admin.class, id);
+		return admin;
+	}
+	
+	public Admin removeAdmin(Admin admin) {
+		this.em.remove(admin);
+		return admin;
+	}
+	
+	public Admin removeAdminById(Long id) {
+		Admin admin = this.em.find(Admin.class, id);
+		this.em.remove(admin);
+		return admin;
 	}
 }
