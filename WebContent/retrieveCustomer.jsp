@@ -15,13 +15,13 @@
 		<h1>Insert the Customer's product's Id</h1>
 		<h:form>
 			<div>Product'Id:
-				<h:inputText value = "#{retrieveCustomerController.id}"
+				<h:inputText value = "#{customerController.id}"
 					required = "true" requiredMessage = "Id is mandatory" id = "id"/>	
 					<h:message for="id" />			
 			</div>
 			<div>
 				<h:commandButton value="Insert"
-					action="#{retrieveCustomerController.getCustomer}" />
+					action="#{customerController.registerCustomer}" />
 			</div>
 		</h:form>
 	</body>

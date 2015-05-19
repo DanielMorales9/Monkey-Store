@@ -10,8 +10,17 @@
 		<class>model.Order</class>
 		<class>model.OrderLine</class>
 		<class>model.Customer</class>
+		<class>model.Provider</class>
+		<class>model.Address</class>
+		<class>model.Admin</class>
 		<properties>
+			<property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver" />
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+			<property name="openjpa.Log"
+				value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />
+			<property name="openjpa.jdbc.MappingDefaults"
+				value="ForeignKeyDeleteAction=restrict,JoinForeignKeyDeleteAction=restrict" />
+			<property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost/project" />
 		</properties>
 	</persistence-unit>
 </persistence>

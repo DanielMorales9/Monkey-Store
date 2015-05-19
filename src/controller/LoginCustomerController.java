@@ -4,64 +4,47 @@ import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import model.Customer;
 import model.facade.CustomerFacade;
-import exception.InvalidEmailException;
-import exception.InvalidPasswordException;
 
-@ManagedBean
+@ManagedBean(name="loginCustomer")
+@SessionScoped
 public class LoginCustomerController {
 	
 	@EJB(beanName="cFacade")
-	private CustomerFacade customerFacade;
-	private String password;
+	private CustomerFacade facade;
+	
 	private String email;
-	private Customer customer;
-	private String loginError;
+	private String password;
 	private String firstName;
 	private String lastName;
-	private Date bDay;
+	private Date birthDay;
+	
+	private String loginError;
 	private String registerError;
+	
+	private Customer customer;
 	
 	public String loginCustomer() {
 		try {
-			setCustomer(customerFacade.loginCustomer(email, password));
-		}
-		catch (InvalidPasswordException | InvalidEmailException e) {
-			setLoginError("Email or Password is not valid");
+			customer = facade.retrieveCustomerByEmailAndPassword(email, password);
+		} catch (Exception e) {
+			loginError = "Email or Password is not valid";
 			return "loginCustomer";
-		}
-		catch (Exception e) {
-			return "error";
 		}
 		return "customerArea";
 	}
 	
-	public String registerNewCustomer() {
+	public String registerCustomer() {
 		try {
-			customer = customerFacade.createNewCustomer(email, password, firstName, lastName, bDay);
+		customer = facade.createCustomer(email, password, firstName, lastName, birthDay);
 		} catch (Exception e) {
-			registerError ="Email already registered";
-			return "signupCustomer";
+			registerError="Email already exists";
+			return "registerCustomer";
 		}
 		return "customerArea";
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public String getLoginError() {
-		return loginError;
-	}
-
-	public void setLoginError(String loginError) {
-		this.loginError = loginError;
 	}
 	
 	public String getEmail() {
@@ -76,39 +59,50 @@ public class LoginCustomerController {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public Date getbDay() {
-		return bDay;
-	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public String getRegisterError() {
-		return registerError;
-	}
 
-	public void setbDay(Date bDay) {
-		this.bDay = bDay;
-	}
-	
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 	
-	public void setCustomerFacade(CustomerFacade customerFacade) {
-		this.customerFacade = customerFacade;
+	public Date getBirthDay() {
+		return birthDay;
 	}
+	
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
+	public String getLoginError() {
+		return loginError;
+	}
+	public void setLoginError(String loginError) {
+		this.loginError = loginError;
+	}
+
+	public String getRegisterError() {
+		return registerError;
+	}
+
 	public void setRegisterError(String registerError) {
 		this.registerError = registerError;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 }
