@@ -6,37 +6,52 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
-import model.Order;
+import model.Customer;
 import model.Product;
-import model.facade.OrderFacade;
-import model.facade.ProductFacade;
+import model.facade.CustomerFacade;
 
-@ManagedBean(name="orderController")
+@ManagedBean
 public class OrderController {
+
+	@EJB(beanName="cFacade")
+	private CustomerFacade facade;
 	
-	@EJB(beanName="oFacade")
-	private OrderFacade orderFacade;
-	@EJB(beanName="pFacade")
-	private ProductFacade productFacade;
+	private Customer customer;
+	@ManagedProperty(value="#{param.idCustomer}")
+	private Long idCustomer;
 	
+	private Integer quantity;
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	
 	private List<Product> products;
 	
-	public String createOrder() {
-		Order order = orderFacade.createOrder(id);
-		id = order.getId();
-		products = productFacade.listProducts();
-		return "products";
-	}
-
-	public Long getId() {
-		return id;
+	public String createNewOrder() {
+		customer = facade.findCustomerById(idCustomer);
+		setProducts(facade.createNewOrder(customer));
+		return "chooseProducts";
 	}
 	
-	public void setId(Long id) {
-		this.id = id;
+	public String addNewProductToOrder() {
+		facade.addProductToOrder(id, quantity);
+		products = facade.getAllProducts();
+		return "chooseProducts";
+	}
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public Long getIdCustomer() {
+		return idCustomer;
+	}
+	
+	public void setIdCustomer(Long idCustomer) {
+		this.idCustomer = idCustomer;
 	}
 
 	public List<Product> getProducts() {
@@ -45,5 +60,21 @@ public class OrderController {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

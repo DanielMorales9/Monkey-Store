@@ -14,11 +14,11 @@
 </head>
 	<body>	
 		<h1>Customer's details</h1>
-			<div>${customerController.customer.email}</div>
-			<div>${customerController.customer.password}</div>
-			<div>${customerController.customer.firstName}</div>
-			<div>${customerController.customer.lastName}</div>
-			<div>${customerController.customer.birthDay}</div>				
+			<div>${retrieveCustomer.customer.email}</div>
+			<div>${retrieveCustomer.customer.password}</div>
+			<div>${retrieveCustomer.customer.firstName}</div>
+			<div>${retrieveCustomer.customer.lastName}</div>
+			<div>${retrieveCustomer.customer.bDay}</div>				
 	</body>
 </f:view>
 </html>

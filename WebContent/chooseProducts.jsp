@@ -16,21 +16,17 @@
 					<th>Name</th>
 					<th>Price</th>
 				</tr>
-				<c:forEach var="product" items="${orderController.products}">
+				<c:forEach var="product" items="#{orderController.products}">
 					<tr>
 						<td><h:commandLink
-								
+								action="#{productDetailsController.findProductById}"
 								value="#{product.name}">
-								<!--<f:param name="productId" value="#{product.id}" />
-								<f:param name="id" value="#{orderController.id}" />-->
+								<f:param name="id" value="#{product.id}" />
 							</h:commandLink></td>
 						<td>${product.price}</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<div>
-			<h:commandButton value="End Order" action="#{orderController.createOrder}"></h:commandButton>
-			</div>
 		</h:form>
 
 	</f:view>

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,6 +20,11 @@ public class Product {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+	
+	@OneToMany( cascade = {CascadeType.MERGE})
+	@JoinColumn(name="product_id")
+	private List<Order> orders;
 	
 	@JoinColumn(nullable = false)
 	private String name;
@@ -36,9 +42,6 @@ public class Product {
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date creationDate;
 	
-	@ManyToMany(mappedBy="products")
-	private List<Provider> providers;
-	
 	public Product() {
 		
 	}
@@ -49,17 +52,9 @@ public class Product {
 		this.code = code;
 		this.price = price;
 		this.creationDate = new Date();
-		this.providers = new ArrayList<>();
+		this.orders = new ArrayList<Order>();
 	}
-	
-	public List<Provider> getProviders() {
-		return providers;
-	}
-	
-	public void setProviders(List<Provider> providers) {
-		this.providers = providers;
-	}
-	
+
 	public String getName() {
 		return name;
 	}

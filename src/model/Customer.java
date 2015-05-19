@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import exception.InvalidPasswordException;
 
 @Entity
 public class Customer {
@@ -44,9 +44,6 @@ public class Customer {
 	
 	@OneToMany(mappedBy="customer")
 	private List<Order> orders;
-	
-	@OneToOne(cascade={CascadeType.PERSIST})
-	private Address address;
 
 	public Customer() {
 
@@ -59,7 +56,8 @@ public class Customer {
 		this.password = password;
 		this.birthDay = birthDay;
 		this.registrationDate = new Date();
-		this.orders = new ArrayList<Order>();		
+		this.orders = new ArrayList<Order>();
+		
 	}
 	
 	public String getFirstName() {
@@ -126,22 +124,10 @@ public class Customer {
 		this.id = id;
 	}
 	
-	public Address getAddress() {
-		return address;
-	}
-	
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-	public void checkPassword(String password) throws Exception {
+	public void checkPassword(String password) throws InvalidPasswordException {
 		if (!this.password.equals(password)) {
-			throw new Exception();
+			throw new InvalidPasswordException();
 		}
-	}
-
-	public void addOrder(Order order) {
-		this.orders.add(order);
 	}
 
 

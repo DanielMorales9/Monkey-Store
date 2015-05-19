@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 @Entity
 public class Admin {
 	
@@ -50,13 +49,6 @@ public class Admin {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public void checkPassword(String password2) 
-			throws Exception {
-		if (!this.password.equals(password)) {
-			throw new Exception();
-		}
 	}
 
 }

@@ -15,21 +15,21 @@
 		<h:form>
 			<div>
 				Firstname:
-				<h:inputText value="#{loginCustomer.firstName}"
+				<h:inputText value="#{loginCustomerController.firstName}"
 					required="true" requiredMessage="Firstname is mandatory"
 					id="firstName" />
 				<h:message for="firstName" />
 			</div>
 			<div>
 				Lastname:
-				<h:inputText value="#{loginCustomer.lastName}"
+				<h:inputText value="#{loginCustomerController.lastName}"
 					required="true" requiredMessage="Lastname is mandatory"
 					id="lastName" />
 				<h:message for="lastName" />
 			</div>
 			<div>
 				Email:
-				<h:inputText value="#{loginCustomer.email}"
+				<h:inputText value="#{loginCustomerController.email}"
 					required="true" requiredMessage="Email is mandatory" id="email"
 					validatorMessage="Email is not valid">
 					<f:validateRegex pattern=".+@.+\\.[a-z]+" />
@@ -38,8 +38,8 @@
 			</div>
 			<div>
 				Date of Birth:
-				<h:inputText value="#{loginCustomer.birthDay}"
-					required="true" requiredMessage="Date of Birth is mandatory"
+				<h:inputText value="#{loginCustomerController.bDay}" required="true"
+					requiredMessage="Date of Birth is mandatory"
 					converterMessage="Date of Birth is not valid" id="bDay">
 					<f:convertDateTime pattern="dd/mm/yyyy" />
 				</h:inputText>
@@ -47,17 +47,17 @@
 			</div>
 			<div>
 				Password:
-				<h:inputSecret value="#{loginCustomer.password}"
+				<h:inputSecret value="#{loginCustomerController.password}"
 					required="true" requiredMessage="Password is mandatory"
 					id="password" />
 				<h:message for="password" />
 			</div>
 			<div>
-				<h:outputText value="#{loginCustomer.registerError}" />
+				<h:outputText value="#{loginCustomerController.registerError}" />
 			</div>
 			<div>
 				<h:commandButton value="Register"
-					action="#{loginCustomer.registerCustomer}" />
+					action="#{loginCustomerController.registerNewCustomer}" />
 			</div>
 		</h:form>
 	</body>

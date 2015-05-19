@@ -35,7 +35,7 @@ public class ProductController {
 	}
 	
 	public String listProducts() {
-		this.products = productFacade.listProducts();
+		this.products = productFacade.getAllProducts();
 		return "products"; 
 	}
 
