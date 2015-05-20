@@ -14,16 +14,15 @@
 	</head>
 	<body>
 		<h1>Customer Area</h1>
-		<div>${loginCustomer.customer.firstName}</div>
-		<div>${loginCustomer.customer.lastName}</div>
-		<div>${loginCustomer.customer.email}</div>
-		<div>${loginCustomer.customer.birthDay}</div>
+		<div>${customerSession.customer.firstName}</div>
+		<div>${customerSession.customer.lastName}</div>
+		<div>${customerSession.customer.email}</div>
+		<div>${customerSession.customer.birthDay}</div>
 
 		<h:form>
 			<div>
 				<h:commandButton value="Create Order"
 					action="#{orderController.createOrder}">
-					<f:param value="#{loginCustomer.customer.id}" name="id" />
 				</h:commandButton>
 			</div>
 		</h:form>

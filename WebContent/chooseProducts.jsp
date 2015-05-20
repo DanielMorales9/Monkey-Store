@@ -3,12 +3,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+<f:view>
+	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Products</title>
-</head>
-<body>
-	<f:view>
+	</head>
+	<body>
 		<h1>Products</h1>
 		<h:form>
 			<table>
@@ -16,23 +16,20 @@
 					<th>Name</th>
 					<th>Price</th>
 				</tr>
-				<c:forEach var="product" items="${orderController.products}">
+				<c:forEach var="product" items="#{orderController.products}">
 					<tr>
-						<td><h:commandLink
-								
-								value="#{product.name}">
-								<!--<f:param name="productId" value="#{product.id}" />
-								<f:param name="id" value="#{orderController.id}" />-->
-							</h:commandLink></td>
+						<td>
+							<h:commandLink value="#{product.name}" >
+							</h:commandLink>
+							</td>
 						<td>${product.price}</td>
 					</tr>
 				</c:forEach>
 			</table>
 			<div>
-			<h:commandButton value="End Order" action="#{orderController.createOrder}"></h:commandButton>
 			</div>
 		</h:form>
 
-	</f:view>
-</body>
+	</body>
+</f:view>
 </html>

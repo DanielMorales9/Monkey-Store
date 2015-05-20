@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
@@ -50,6 +51,18 @@ public class CustomerFacade {
 		List<Customer> customers = em.createQuery(cq).getResultList();
 		return customers;
 	}
+
+	public boolean existsEmail(String email) {
+			TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c where c.email =:email", Customer.class);
+			query.setParameter("email", email);
+			query.getSingleResult();
+			try {
+				query.getSingleResult();
+				return true;
+			} catch (NoResultException e) {
+				return false;
+			}
+ 	}
 
 
 }
