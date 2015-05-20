@@ -10,7 +10,7 @@
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Customer's Details</title>
+<title>Customer Details</title>
 	</head>
 	<body>
 		<h1>Customer Area</h1>

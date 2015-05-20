@@ -1,57 +1,70 @@
 package controller;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 import model.Order;
 import model.Product;
 import model.facade.OrderFacade;
+import model.facade.OrderLineFacade;
 import model.facade.ProductFacade;
 
 @ManagedBean(name="orderController")
-@SessionScoped
 public class OrderController {
 	
+	/**
+	 * 	EJB facades 
+	 */
 	@EJB(beanName="oFacade")
 	private OrderFacade orderFacade;
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
+	@EJB(beanName="olFacade")
+	private OrderLineFacade orderLineFacade;
 		
-	@ManagedProperty(value="#{session}")
+	/**
+	 * Managed Properties
+	 */
+	@ManagedProperty(value="#{customerSession}")
 	private CustomerSessionController session;
 	
-	private List<Product> products;
+	@ManagedProperty(value="#{param.productId}")
+	private Long productId;
 	
 	private Integer quantity;
-	
-	private Product product;
 	
 	public String createOrder() {
 		Order order = orderFacade.createOrder(session.getCustomer().getId());
 		session.setOrder(order);
-		products = productFacade.listProducts();
+		listProducts();
 		return "chooseProducts";
 	}
 
 
-	public List<Product> getProducts() {
-		return products;
+	public String addOrderLineToOrder() {
+		Product product = productFacade.findProductById(productId);
+		orderLineFacade.addOrderLineToOrder(session.getOrder().getId(), product, quantity);
+		listProducts();
+		return "chooseProducts";
 	}
 
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	private void listProducts() {
+		session.setProducts(productFacade.listProducts());
 	}
+	
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
 
-	public Product getProduct() {
-		return product;
+	public Long getProductId() {
+		return productId;
 	}
-
-	public void setProduct(Product product) {
-		this.product = product;
+	
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 
 	public Integer getQuantity() {
