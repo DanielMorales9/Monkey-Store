@@ -5,11 +5,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -22,23 +22,23 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private String firstName;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private String lastName;
 	
-	@JoinColumn(nullable = false, unique=true)
+	@Column(nullable = false, unique=true)
 	private String email;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private String password;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	@Temporal(value=TemporalType.DATE)
 	private Date birthDay;
 		
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date registrationDate;
 	
