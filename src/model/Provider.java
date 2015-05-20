@@ -22,7 +22,7 @@ public class Provider {
 	@Column(nullable = false)
 	private Long vatin;
 	
-	
+	@Column(nullable = false)
 	private String phoneNumber;
 	
 
@@ -50,6 +50,13 @@ public class Provider {
 		this.name = name;
 		this.products = new ArrayList<>();
 	}
+	
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
+
 	
 	public Long getVatin() {
 		return vatin;

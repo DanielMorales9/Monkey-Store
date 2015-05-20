@@ -31,17 +31,23 @@ public class OrderLineFacade {
 		return ol;
 	}
 	
-	public void removeOrderLine(Long orderId, Long orderLineId) {
+	public void removeOrderLineFromOrder(Long orderId, Long orderLineId) {
 		OrderLine ol = this.em.find(OrderLine.class, orderLineId);
 		Order o = this.em.find(Order.class, orderId);
-		o.removeOrderLine(ol);
 		this.em.remove(ol);
+		o.removeOrderLine(ol);
 		this.em.merge(o);
 	}
 	
-	public OrderLine findOrderById(Long id) {
+	public OrderLine findOrderLineById(Long id) {
 		OrderLine ol = this.em.find(OrderLine.class, id);
 		return ol;
+	}
+
+	public void updateOrderLineQuantity(Long id, Integer quantity) {
+		OrderLine ol = this.em.find(OrderLine.class, id);
+		ol.setQuantity(quantity);
+		this.em.merge(ol);
 	}
 	
 	

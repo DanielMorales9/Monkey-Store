@@ -62,6 +62,23 @@ public class Customer {
 		this.orders = new ArrayList<Order>();		
 	}
 	
+	public void checkPassword(String password) throws Exception {
+		if (!this.password.equals(password)) {
+			throw new Exception();
+		}
+	}
+	
+	public void addOrder(Order order) {
+		this.orders.add(order);
+	}
+
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
+
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -134,15 +151,6 @@ public class Customer {
 		this.address = address;
 	}
 	
-	public void checkPassword(String password) throws Exception {
-		if (!this.password.equals(password)) {
-			throw new Exception();
-		}
-	}
-
-	public void addOrder(Order order) {
-		this.orders.add(order);
-	}
 
 
 }

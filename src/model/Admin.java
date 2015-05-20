@@ -38,6 +38,20 @@ public class Admin {
 		this.password = password;
 	}
 
+	public void checkPassword(String password2) 
+			throws Exception {
+		if (!this.password.equals(password)) {
+			throw new Exception();
+		}
+	}
+	
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -62,11 +76,5 @@ public class Admin {
 		this.password = password;
 	}
 
-	public void checkPassword(String password2) 
-			throws Exception {
-		if (!this.password.equals(password)) {
-			throw new Exception();
-		}
-	}
 
 }

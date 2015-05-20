@@ -38,8 +38,8 @@ public class OrderFacade {
 		Customer customer = this.em.find(Customer.class, id);
 		Order order = new Order(customer);
 		customer.addOrder(order);
-		this.em.merge(customer);
 		this.em.persist(order);
+		this.em.merge(customer);
 		return order;
 	}
 }

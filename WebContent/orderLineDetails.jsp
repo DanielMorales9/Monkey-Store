@@ -9,17 +9,18 @@
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add Product</title>
+<title>OrderLine Details</title>
 	</head>
 	<body>
-		<h1>${customerSession.product.name}</h1>
-
+		<h1>${customerSession.orderLine.product.name}</h1>
 		<h2>Details</h2>
-		<div>Code: ${customerSession.product.code}</div>
-		<div>Price: ${customerSession.product.price}</div>
-		<div>Description: ${customerSession.product.description}</div>
-
-		<h4>Add To Order</h4>
+		<div>Code: ${customerSession.orderLine.product.code}</div>
+		<div>Price: ${customerSession.orderLine.product.price}</div>
+		<div>Description:
+			${customerSession.orderLine.product.description}</div>
+		<div>Quantity: ${customerSession.orderLine.quantity}</div>
+		<div>Total Price: <h:outputText value="#{customerSession.orderLine.subTotal}"></h:outputText></div>
+		<h4>Modify OrderLine</h4>
 		<h:form>
 			<div>
 				<h:inputText id="quantity" value="#{orderLineController.quantity}"
@@ -32,7 +33,16 @@
 				<h:message for="quantity" />
 			</div>
 			<div>
-			<h:commandButton value="Add" action="#{orderLineController.addOrderLineToOrder}"></h:commandButton>
+				<h:commandButton value="Modify"
+					action="#{orderLineController.updateOrderLineQuantity}"></h:commandButton>
+
+			</div>
+		</h:form>
+		<h:form>
+			<div>
+				<h:commandButton value="Cancel"
+					action="#{orderLineController.cancelOrderLine}">
+				</h:commandButton>
 			</div>
 		</h:form>
 	</body>

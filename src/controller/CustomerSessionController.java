@@ -7,6 +7,7 @@ import javax.faces.bean.SessionScoped;
 
 import model.Customer;
 import model.Order;
+import model.OrderLine;
 import model.Product;
 
 @ManagedBean(name="customerSession")
@@ -14,7 +15,10 @@ import model.Product;
 public class CustomerSessionController {
 	
 	private Customer customer;
+	
 	private Order order;
+	private OrderLine orderLine;
+
 	private List<Product> products;
 	private Product product;
 	
@@ -54,6 +58,14 @@ public class CustomerSessionController {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public OrderLine getOrderLine() {
+		return orderLine;
+	}
+
+	public void setOrderLine(OrderLine orderLine) {
+		this.orderLine = orderLine;
 	}
 
 }

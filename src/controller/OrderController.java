@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedProperty;
 
 import model.Order;
 import model.facade.OrderFacade;
-import model.facade.OrderLineFacade;
 import model.facade.ProductFacade;
 
 @ManagedBean(name="orderController")
@@ -19,8 +18,6 @@ public class OrderController {
 	private OrderFacade orderFacade;
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
-	@EJB(beanName="olFacade")
-	private OrderLineFacade orderLineFacade;
 
 	/**
 	 * Managed Properties
@@ -28,10 +25,6 @@ public class OrderController {
 	@ManagedProperty(value="#{customerSession}")
 	private CustomerSessionController session;
 
-	@ManagedProperty(value="#{param.productId}")
-	private Long productId;
-
-	private Integer quantity;
 
 	public String createOrder() {
 		Order order = orderFacade.createOrder(session.getCustomer().getId());
@@ -40,11 +33,15 @@ public class OrderController {
 		return "chooseProducts";
 	}
 
-	public String addOrderLineToOrder() {
-		orderLineFacade.addOrderLineToOrder(session.getOrder().getId(),
-				session.getProduct(), quantity);
-		listProducts();
-		return "chooseProducts";
+	public String endOrder() {
+		Order order = orderFacade.findOrderById(session.getOrder().getId());
+		session.setOrder(order);
+		return "confirmOrder";
+	}
+
+	public String cancelOrder() {
+		orderFacade.removeOrderById(session.getOrder().getId());
+		return "customerArea";
 	}
 
 	private void listProducts() {
@@ -57,22 +54,6 @@ public class OrderController {
 	 * -----------------
 	 */
 
-	public Long getProductId() {
-		return productId;
-	}
-
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
 	public CustomerSessionController getSession() {
 		return session;
 	}
@@ -80,4 +61,5 @@ public class OrderController {
 	public void setSession(CustomerSessionController session) {
 		this.session = session;
 	}
+
 }

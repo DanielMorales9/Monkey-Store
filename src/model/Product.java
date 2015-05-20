@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,19 +20,19 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private String name;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private String description;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private Float price;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	private String code;
 	
-	@JoinColumn(nullable = false)
+	@Column(nullable = false)
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date creationDate;
 	
@@ -51,6 +51,13 @@ public class Product {
 		this.creationDate = new Date();
 		this.providers = new ArrayList<>();
 	}
+	
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
+
 	
 	public List<Provider> getProviders() {
 		return providers;

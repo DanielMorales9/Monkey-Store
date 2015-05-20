@@ -18,19 +18,29 @@
 					<th>Quantity</th>
 
 				</tr>
-				<c:forEach var="line" items="#{orderController.orderLines}">
+				<c:forEach var="line" items="#{customerSession.order.orderLines}">
 					<tr>
 						<td><h:commandLink
-								action="#{orderController.findProductById}"
+								action="#{orderLineController.findOrderLineById}"
 								value="#{line.product.name}">
-								<f:param name="id" value="#{line.product.id}" />
+								<f:param name="orderLineId" value="#{line.id}" />
 							</h:commandLink></td>
 						<td>${line.product.price}</td>
 						<td>${line.quantity}</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<div></div>
+			
+			<div>Total Price: <h:outputText value="#{customerSession.order.total}"></h:outputText> </div>
+			
+			<div>
+				<h:commandButton value="Confirm" action="customerArea"></h:commandButton>
+			</div>
+
+			<div>
+				<h:commandButton value="Cancel order"
+					action="#{orderController.cancelOrder}"></h:commandButton>
+			</div>
 		</h:form>
 
 	</f:view>

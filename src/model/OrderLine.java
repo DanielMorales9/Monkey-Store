@@ -30,6 +30,18 @@ public class OrderLine {
 		this.quantity = quantity;
 	}
 
+	public Float getSubTotal() {
+		float price = product.getPrice();
+		int qnty = quantity;
+		return qnty*price; 
+	}
+	
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
+
 	public Product getProduct() {
 		return product;
 	}
@@ -46,4 +58,13 @@ public class OrderLine {
 		this.quantity = quantity;
 	}
 
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 }

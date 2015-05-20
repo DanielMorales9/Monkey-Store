@@ -50,6 +50,35 @@ public class Order {
 		this.creationDate = new Date();
 		this.orderLines = new ArrayList<OrderLine>();
 	}
+	
+	public Float getTotal() {
+		float total = 0;
+		for (OrderLine orderLine : orderLines) {
+			total += orderLine.getSubTotal();
+		}
+		return total;
+	}
+	
+	public void addOrderLine(OrderLine ol) {
+		this.orderLines.add(ol);
+	}
+
+	public void removeOrderLine(OrderLine ol) {
+		this.orderLines.remove(ol);
+	}
+	
+	public OrderLine createOrderLine(Product product, Integer quantity) {
+		OrderLine ol = new OrderLine(product, quantity);
+		this.orderLines.add(ol);
+		return ol;
+	}
+	
+	/**
+	 * -----------------
+	 * GETTER AND SETTER
+	 * -----------------
+	 */
+
 
 	public Date getClosingDate() {
 		return closingDate;
@@ -88,26 +117,11 @@ public class Order {
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
-
-	public OrderLine createOrderLine(Product product, Integer quantity) {
-		OrderLine ol = new OrderLine(product, quantity);
-		this.orderLines.add(ol);
-		return ol;
-	}
-
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void addOrderLine(OrderLine ol) {
-		this.orderLines.add(ol);
-	}
-
-	public void removeOrderLine(OrderLine ol) {
-		this.orderLines.remove(ol);
 	}
 
 }

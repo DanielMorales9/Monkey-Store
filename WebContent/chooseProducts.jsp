@@ -20,13 +20,21 @@
 					<tr>
 						<td><h:commandLink value="#{product.name}"
 								action="#{orderLineController.findProductById}">
-								<f:param name="productId" value="#{product.id}"/>
+								<f:param name="productId" value="#{product.id}" />
 							</h:commandLink></td>
 						<td>${product.price}</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<div></div>
+			<div>
+				<h:commandButton value="End order"
+					action="#{orderController.endOrder}"></h:commandButton>
+			</div>
+
+			<div>
+				<h:commandButton value="Cancel order"
+					action="#{orderController.cancelOrder}"></h:commandButton>
+			</div>
 		</h:form>
 
 	</body>
