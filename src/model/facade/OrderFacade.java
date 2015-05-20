@@ -18,6 +18,7 @@ public class OrderFacade {
 	
 	public Order findOrderById(Long id) {
 		Order order = this.em.find(Order.class, id);
+		order.getOrderLines();
 		return order;
 	}
 	
@@ -41,5 +42,10 @@ public class OrderFacade {
 		this.em.persist(order);
 		this.em.merge(customer);
 		return order;
+	}
+
+	public List<Order> listCustomerOrders(Long customerId) {
+		Customer customer = this.em.find(Customer.class, customerId);
+		return customer.getOrders();
 	}
 }

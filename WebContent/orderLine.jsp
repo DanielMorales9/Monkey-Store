@@ -23,31 +23,6 @@
 			Total Price:
 			<h:outputText value="#{customerSession.orderLine.subTotal}"></h:outputText>
 		</div>
-		<h4>Modify OrderLine</h4>
-		<h:form>
-			<div>
-				<h:inputText id="quantity" value="#{orderLineController.quantity}"
-					required="true" requiredMessage="Quantity is mandatory"
-					validatorMessage="Quantity must be positive"
-					converterMessage="Quantity must be a number">
-					<f:validateLongRange minimum="1" />
-					<f:convertNumber type="number" />
-				</h:inputText>
-				<h:message for="quantity" />
-			</div>
-			<div>
-				<h:commandButton value="Modify"
-					action="#{orderLineController.updateOrderLineQuantity}"></h:commandButton>
-
-			</div>
-		</h:form>
-		<h:form>
-			<div>
-				<h:commandButton value="Remove OrderLine"
-					action="#{orderLineController.cancelOrderLine}">
-				</h:commandButton>
-			</div>
-		</h:form>
 	</body>
 </f:view>
 </html>

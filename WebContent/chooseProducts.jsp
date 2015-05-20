@@ -27,12 +27,12 @@
 				</c:forEach>
 			</table>
 			<div>
-				<h:commandButton value="End order"
+				<h:commandButton value="End Order"
 					action="#{orderController.endOrder}"></h:commandButton>
 			</div>
 
 			<div>
-				<h:commandButton value="Cancel order"
+				<h:commandButton value="Cancel Order"
 					action="#{orderController.cancelOrder}"></h:commandButton>
 			</div>
 		</h:form>

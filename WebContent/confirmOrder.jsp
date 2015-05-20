@@ -34,11 +34,11 @@
 			<div>Total Price: <h:outputText value="#{customerSession.order.total}"></h:outputText> </div>
 			
 			<div>
-				<h:commandButton value="Confirm" action="customerArea"></h:commandButton>
+				<h:commandButton value="Confirm" action="#{orderController.confirmOrder}"></h:commandButton>
 			</div>
 
 			<div>
-				<h:commandButton value="Cancel order"
+				<h:commandButton value="Cancel Order"
 					action="#{orderController.cancelOrder}"></h:commandButton>
 			</div>
 		</h:form>

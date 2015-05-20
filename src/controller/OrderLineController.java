@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
+import controller.session.CustomerSessionController;
 import model.Order;
 import model.OrderLine;
 import model.facade.OrderFacade;

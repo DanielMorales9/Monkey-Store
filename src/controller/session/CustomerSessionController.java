@@ -1,4 +1,4 @@
-package controller;
+package controller.session;
 
 import java.util.List;
 
@@ -21,6 +21,8 @@ public class CustomerSessionController {
 
 	private List<Product> products;
 	private Product product;
+
+	private List<Order> orders;
 	
 	/**
 	 * -----------------
@@ -66,6 +68,14 @@ public class CustomerSessionController {
 
 	public void setOrderLine(OrderLine orderLine) {
 		this.orderLine = orderLine;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+	
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 }

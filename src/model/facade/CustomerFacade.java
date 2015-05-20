@@ -27,6 +27,7 @@ public class CustomerFacade {
 			throw new Exception();
 		}
 		customer.checkPassword(password);
+		customer.getOrders();
 		return customer;	
 	}
 
