@@ -23,6 +23,7 @@
 			<div>
 				<h:commandButton value="Create Order"
 					action="#{orderController.createOrder}">
+
 				</h:commandButton>
 			</div>
 		</h:form>

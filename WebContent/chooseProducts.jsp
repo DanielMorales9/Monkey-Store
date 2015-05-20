@@ -18,20 +18,11 @@
 				</tr>
 				<c:forEach var="product" items="#{customerSession.products}">
 					<tr>
-						<td><h:commandLink value="#{product.name}">
+						<td><h:commandLink value="#{product.name}"
+								action="#{orderLineController.findProductById}">
+								<f:param name="productId" value="#{product.id}"/>
 							</h:commandLink></td>
 						<td>${product.price}</td>
-						<td><h:inputText value="#{orderController.quantity}"
-								required="true" requiredMessage="Quantity is mandatory"
-								id="quantity" validatorMessage="Quantity must be positive"
-								converterMessage="Quantity must be a number">
-								<f:validateLongRange minimum="1" />
-								<f:convertNumber type="number" />
-							</h:inputText> <h:message for="quantity" /> 
-							<h:commandButton value="Add"
-								action="#{orderController.addOrderLineToOrder}">
-								<f:param value="#{product.id}" name="productId"></f:param>
-							</h:commandButton></td>
 					</tr>
 				</c:forEach>
 			</table>

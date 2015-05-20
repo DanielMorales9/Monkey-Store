@@ -26,7 +26,8 @@ public class OrderLineFacade {
 		OrderLine ol = new OrderLine(product, quantity);
 		Order order = this.em.find(Order.class, id);
 		order.addOrderLine(ol);
-		this.em.persist(order);
+		this.em.persist(ol);
+		this.em.merge(order);
 		return ol;
 	}
 	
