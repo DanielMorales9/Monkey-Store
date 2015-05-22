@@ -17,8 +17,8 @@ public class AdminFacade {
 	@PersistenceContext(unitName="unit-project")
 	private EntityManager em;
 	
-	public Admin createAdmin(String email, String password) {
-		Admin admin = new Admin(email, password);
+	public Admin createAdmin(String firstName, String lastName, String email, String password) {
+		Admin admin = new Admin(firstName, lastName, email, password);
 		this.em.persist(admin);
 		return admin;
 	}
@@ -57,5 +57,11 @@ public class AdminFacade {
 		Admin admin = this.em.find(Admin.class, id);
 		this.em.remove(admin);
 		return admin;
+	}
+	
+	public boolean existsEmail(String email) {
+		TypedQuery<Admin> query = em.createQuery("SELECT a FROM Admin a where a.email =:email", Admin.class);
+		query.setParameter("email", email);
+		return query.getResultList().size() != 0;
 	}
 }
