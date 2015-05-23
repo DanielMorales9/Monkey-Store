@@ -2,7 +2,7 @@
 È un sito di e-commerce per la vendita di prodotti online.
 ##Casi d'uso
 
-####Caso D'Uso UC1: Consulta listino <a name="UC1"></a>
+####Caso D'Uso UC1: Consulta listino {#UC1}
 **Attore primario:** Un Utente non registrato.  
 + Un utente può navigare i prodotti e visualizzarne i dettagli.  
 A partire da un prodotto può vedere gli utenti che l’hanno acquistato.
@@ -23,7 +23,7 @@ _Il Cliente ripete i passi 4-5 fino a che non indica che ha terminato._
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine è completato e può essere visualizzato tra gli ordini  effettuati del Cliente. [Caso d'uso UC3](UC3)
 
 _ _ _ _ _
-####Caso D'Uso UC3: Consulta i propri ordini  <a name="UC3"></a>
+####Caso D'Uso UC3: Consulta i propri ordini  {#UC3}
 **Attore primario:** Un Cliente.   
 **_Scenario principale di successo:_**  
 **1.** Il Cliente vuole consultare gli ordini da lui effettuati.  
