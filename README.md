@@ -2,7 +2,7 @@
 È un sito di e-commerce per la vendita di prodotti online.
 ##Casi d'uso
 
-####Caso D'Uso UC1: Consulta listino
+####Caso D'Uso UC1: Consulta listino <a name="UC1"></a>
 **Attore primario:** Un Utente non registrato.  
 + Un utente può navigare i prodotti e visualizzarne i dettagli.  
 A partire da un prodotto può vedere gli utenti che l’hanno acquistato.
@@ -20,11 +20,11 @@ _ _ _ _ _
 _Il Cliente ripete i passi 4-5 fino a che non indica che ha terminato._  
 **6.** Il Cliente conferma l'ordine.  
 **7.** Il Sistema registra l'ordine.  
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine è completato e può essere visualizzato tra gli ordini effettuati del Cliente.
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine è completato e può essere visualizzato tra gli ordini  effettuati del Cliente. [Caso d'uso UC3](UC3)
 
 _ _ _ _ _
-####Caso D'Uso UC3: Consulta i propri ordini  
-**Attore primario:** Un Cliente.  
+####Caso D'Uso UC3: Consulta i propri ordini  <a name="UC3"></a>
+**Attore primario:** Un Cliente.   
 **_Scenario principale di successo:_**  
 **1.** Il Cliente vuole consultare gli ordini da lui effettuati.  
 **2.** Il Cliente inserisce il suo indirizzo di posta elettronica e la sua password.  
@@ -48,7 +48,7 @@ _L'Amministratore ripete il passo 4 finché necessario._
 **5.** Il Sistema mostra i prodotti inseriti.  
 **6.** L'Amministratore conferma l'inserimento dei prodotti.  
 &nbsp;&nbsp;&nbsp;&nbsp;Il Sistema registra le informazioni sui prodotti e li inserisce nel listino.  
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi potranno essere consultati da Clienti e da utenti non registrati.
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi potranno essere consultati da Clienti e da utenti non registrati. [Caso d'uso UC1](UC1)
 
 _ _ _ _ _
 ####Caso D'Uso UC5: Recupera indirizzo cliente  
@@ -70,7 +70,5 @@ _ _ _ _ _
 **3.** L'Amministratore sceglie l'attività “**_Evasione Ordini_**”.  
 **4.** Il Sistema mostra gli ordini chiusi ma non ancora evasi.  
 **5.** L'Amministratore sceglie un ordine da evadere.  
-**6.** Il Sistema evade l'ordine e aggiorna la quantità di prodotti in magazzino.
-
-_ _ _ _ _
-_ _ _ _ _
+**6.** Il Sistema evade l'ordine e aggiorna la quantità di prodotti in magazzino.  
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine uò essere visualizzato tra gli ordini effettuati del Cliente. [Caso d'uso UC3](UC3).
