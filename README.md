@@ -73,21 +73,4 @@ _ _ _ _ _
 **6.** Il Sistema evade l'ordine e aggiorna la quantità di prodotti in magazzino.  
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine uò essere visualizzato tra gli ordini effettuati del Cliente. 
 
-_ _ _ _ _
-## DB Configurations
-> Configura il file tomee.xml contenuto in conf della directory di tomcat.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<tomee> 
-	<Resource id="PostgreSQL Database" type="DataSource" >
-		JdbcDriver org.postgresql.Driver
-		JdbcUrl jdbc:postgresql://localhost/<your-database-name>
-		UserName <username>
-		Password <password>>
-		JtaManaged true
-		DefaultAutoCommit false
-	</Resource>
-</tomee>
-```
 
