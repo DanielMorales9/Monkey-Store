@@ -2,7 +2,7 @@
 È un sito di e-commerce per la vendita di prodotti online.
 ##Casi d'uso
 
-####Caso D'Uso UC1: Consulta listino  
+####Caso D'Uso UC1: Consulta listino
 **Attore primario:** Un Utente non registrato.  
 + Un utente può navigare i prodotti e visualizzarne i dettagli.  
 A partire da un prodotto può vedere gli utenti che l’hanno acquistato.
@@ -20,10 +20,10 @@ _ _ _ _ _
 _Il Cliente ripete i passi 4-5 fino a che non indica che ha terminato._  
 **6.** Il Cliente conferma l'ordine.  
 **7.** Il Sistema registra l'ordine.  
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine è completato e può essere visualizzato tra gli ordini  effettuati del Cliente. [Caso d'uso UC3](#Caso D'Uso UC1: Consulta listino)
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine è completato e può essere visualizzato tra gli ordini  effettuati del Cliente. 
 
 _ _ _ _ _
-####Caso D'Uso UC3: Consulta i propri ordini
+####Caso D'Uso UC3: Consulta i propri ordini 
 **Attore primario:** Un Cliente.   
 **_Scenario principale di successo:_**  
 **1.** Il Cliente vuole consultare gli ordini da lui effettuati.  
@@ -48,7 +48,7 @@ _L'Amministratore ripete il passo 4 finché necessario._
 **5.** Il Sistema mostra i prodotti inseriti.  
 **6.** L'Amministratore conferma l'inserimento dei prodotti.  
 &nbsp;&nbsp;&nbsp;&nbsp;Il Sistema registra le informazioni sui prodotti e li inserisce nel listino.  
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi potranno essere consultati da Clienti e da utenti non registrati. [Caso d'uso UC1](UC1)
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi potranno essere consultati da Clienti e da utenti non registrati.
 
 _ _ _ _ _
 ####Caso D'Uso UC5: Recupera indirizzo cliente  
@@ -71,4 +71,23 @@ _ _ _ _ _
 **4.** Il Sistema mostra gli ordini chiusi ma non ancora evasi.  
 **5.** L'Amministratore sceglie un ordine da evadere.  
 **6.** Il Sistema evade l'ordine e aggiorna la quantità di prodotti in magazzino.  
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine uò essere visualizzato tra gli ordini effettuati del Cliente. [Caso d'uso UC3](#Caso D'Uso UC3: Consulta i propri ordini).
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine uò essere visualizzato tra gli ordini effettuati del Cliente. 
+
+_ _ _ _ _
+## DB Configurations
+> Configura il file tomee.xml contenuto in conf della directory di tomcat.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee> 
+	<Resource id="PostgreSQL Database" type="DataSource" >
+		JdbcDriver org.postgresql.Driver
+		JdbcUrl jdbc:postgresql://localhost/<your-database-name>
+		UserName <username>
+		Password <password>>
+		JtaManaged true
+		DefaultAutoCommit false
+	</Resource>
+</tomee>
+```
+
