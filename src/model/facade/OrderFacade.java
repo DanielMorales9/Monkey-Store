@@ -2,9 +2,11 @@ package model.facade;
 
 import java.util.List;
 
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 import model.Customer;
@@ -47,5 +49,17 @@ public class OrderFacade {
 	public List<Order> listCustomerOrders(Long customerId) {
 		Customer customer = this.em.find(Customer.class, customerId);
 		return customer.getOrders();
+	}
+	
+	public Customer getCustomer(Long id) throws Exception{
+//		Query query = em.createQuery("SELECT o FROM Order o where o.id =:id");
+//		query.setParameter("id", id);
+//		Order order = (Order) query.getSingleResult();
+		Order order = this.findOrderById(id);
+		Customer customer = order.getCustomer();
+		if (customer == null) {
+			throw new Exception();
+		}
+		return customer;
 	}
 }

@@ -12,16 +12,16 @@
 <title>Retrieve Customer</title>
 </head>
 	<body>
-		<h1>Insert the Customer's product's Id</h1>
+		<h1>Insert the order's id</h1>
 		<h:form>
-			<div>Product'Id:
-				<h:inputText value = "#{customerController.id}"
+			<div>Order'Id:
+				<h:inputText value = "#{retrieveCustomerController.id}"
 					required = "true" requiredMessage = "Id is mandatory" id = "id"/>	
 					<h:message for="id" />			
 			</div>
 			<div>
 				<h:commandButton value="Insert"
-					action="#{customerController.registerCustomer}" />
+					action="#{retrieveCustomerController.getCustomer}" />
 			</div>
 		</h:form>
 	</body>
