@@ -36,13 +36,15 @@ public class Admin {
 		this.password = password;
 	}
 
-	public void checkPassword(String password2) 
+	public void checkPassword(String password) 
 			throws Exception {
 		if (!this.password.equals(password)) {
 			throw new Exception();
 		}
 	}
 	
+	
+
 	/**
 	 * -----------------
 	 * GETTER AND SETTER
@@ -58,6 +60,21 @@ public class Admin {
 		this.id = id;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 	public String getEmail() {
 		return email;
 	}
