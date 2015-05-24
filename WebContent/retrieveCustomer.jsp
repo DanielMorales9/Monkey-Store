@@ -21,7 +21,7 @@
 			</div>
 			<div>
 				<h:commandButton value="Insert"
-					action="#{retrieveCustomerController.getCustomer}" />
+					action="#{retrieveCustomerController.findCustomer}" />
 			</div>
 		</h:form>
 	</body>

@@ -1,7 +1,7 @@
 package controller;
 
-import javax.ejb.EJB;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
@@ -19,7 +19,7 @@ public class RetrieveCustomerController {
 	
 	private Customer customer;
 	
-	public String getCustomer(){		
+	public String findCustomer(){		
 		try {
 			customer = orderFacade.getCustomer(id);
 		}
@@ -40,6 +40,13 @@ public class RetrieveCustomerController {
 
 	public OrderFacade getOrdersFacade() {
 		return orderFacade;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public Customer getCustomer() {
+		return customer;
 	}
 
 
