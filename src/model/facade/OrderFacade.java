@@ -51,10 +51,7 @@ public class OrderFacade {
 		return customer.getOrders();
 	}
 	
-	public Customer getCustomer(Long id) throws Exception{
-//		Query query = em.createQuery("SELECT o FROM Order o where o.id =:id");
-//		query.setParameter("id", id);
-//		Order order = (Order) query.getSingleResult();
+	public Customer getCustomerFromOrderId(Long id) throws Exception{
 		Order order = this.findOrderById(id);
 		Customer customer = order.getCustomer();
 		if (customer == null) {

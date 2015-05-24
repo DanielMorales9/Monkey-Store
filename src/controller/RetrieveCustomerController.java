@@ -21,7 +21,7 @@ public class RetrieveCustomerController {
 	
 	public String findCustomer(){		
 		try {
-			customer = orderFacade.getCustomer(id);
+			customer = orderFacade.getCustomerFromOrderId(id);
 		}
 		catch (Exception e) {
 			return "error";

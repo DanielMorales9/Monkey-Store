@@ -12,7 +12,7 @@
 <title>OrderLine Details</title>
 	</head>
 	<body>
-		<h1>${customerSession.orderLine.product.name}</h1>
+		 <h1>${customerSession.orderLine.product.name}</h1>
 		<h2>Details</h2>
 		<div>Code: ${customerSession.orderLine.product.code}</div>
 		<div>Price: ${customerSession.orderLine.product.price}</div>

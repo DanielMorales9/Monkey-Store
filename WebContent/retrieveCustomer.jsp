@@ -12,7 +12,7 @@
 <title>Retrieve Customer</title>
 </head>
 	<body>
-		<h1>Insert the order's id</h1>
+		<h1>Insert the Order's ID</h1>
 		<h:form>
 			<div>Order'Id:
 				<h:inputText value = "#{retrieveCustomerController.id}"
