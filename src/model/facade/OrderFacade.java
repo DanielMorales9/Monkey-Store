@@ -20,7 +20,7 @@ public class OrderFacade {
 	
 	public Order findOrderById(Long id) {
 		Order order = this.em.find(Order.class, id);
-		order.getOrderLines();
+		order.getOrderLines();				//ATTENZIONE:se l ordine è nullo da errore
 		return order;
 	}
 	
@@ -52,11 +52,11 @@ public class OrderFacade {
 	}
 	
 	public Customer getCustomerFromOrderId(Long id) throws Exception{
-		Order order = this.findOrderById(id);
+//		Order order = this.findOrderById(id);
+		Order order = this.em.find(Order.class, id);
+		if(order == null)
+			return null;
 		Customer customer = order.getCustomer();
-		if (customer == null) {
-			throw new Exception();
-		}
 		return customer;
 	}
 }

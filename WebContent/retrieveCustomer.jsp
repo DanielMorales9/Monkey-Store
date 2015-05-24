@@ -14,10 +14,11 @@
 	<body>
 		<h1>Insert the Order's ID</h1>
 		<h:form>
-			<div>Order'Id:
-				<h:inputText value = "#{retrieveCustomerController.id}"
+			<div>Order's Id:
+				<h:inputText value = "#{retrieveCustomerController.id}" 
 					required = "true" requiredMessage = "Id is mandatory" id = "id"/>	
-					<h:message for="id" />			
+					<h:message for="id" />	
+				<h:outputText value = "#{retrieveCustomerController.error}"/>		
 			</div>
 			<div>
 				<h:commandButton value="Insert"

@@ -12,7 +12,10 @@ import model.facade.OrderFacade;
 public class RetrieveCustomerController {
 
 	@ManagedProperty(value="#{param.id}")
-	private Long id;
+	private Long id;	
+	
+	@ManagedProperty(value="#{param.error}")
+	private String error;	
 	
 	@EJB(beanName="oFacade")
 	private OrderFacade orderFacade;
@@ -22,6 +25,10 @@ public class RetrieveCustomerController {
 	public String findCustomer(){		
 		try {
 			customer = orderFacade.getCustomerFromOrderId(id);
+			if (customer == null){
+				error = "Id doesn't exist";
+				return "retrieveCustomer";
+			}
 		}
 		catch (Exception e) {
 			return "error";
@@ -49,5 +56,11 @@ public class RetrieveCustomerController {
 		return customer;
 	}
 
+	public String getError() {
+		return error;
+	}
 
+	public void setError(String error) {
+		this.error = error;
+	}
 }
