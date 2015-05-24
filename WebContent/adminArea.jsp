@@ -16,6 +16,15 @@
 		<div>${adminSession.admin.firstName}</div>
 		<div>${adminSession.admin.lastName}</div>
 		<div>${adminSession.admin.email}</div>
+		
+		<h:form>
+			<div>
+				<h:commandButton value="Insert New Product"
+					action="insertNewProduct.jsp">
+
+				</h:commandButton>
+			</div>
+		</h:form>
 
 	</body>
 </f:view>

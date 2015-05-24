@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 
 import model.Product;
 import model.facade.AdminFacade;
+import model.facade.ProductFacade;
 
 @ManagedBean
 public class ProductController {
@@ -22,12 +23,14 @@ public class ProductController {
 	private Float price;
 	private String code;
 	
+	private String error;
+	
 
 	private Product product;
 	private List<Product> products;
 	
 	@EJB(beanName="pFacade")
-	private model.facade.ProductFacade productFacade;
+	private ProductFacade productFacade;
 	
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
@@ -99,6 +102,14 @@ public class ProductController {
 	
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 	
 }
