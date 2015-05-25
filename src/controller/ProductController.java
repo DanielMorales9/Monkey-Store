@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
+import controller.session.AdminSessionController;
 import model.Product;
 import model.facade.AdminFacade;
 import model.facade.ProductFacade;
@@ -32,19 +33,22 @@ public class ProductController {
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
 	
+	@ManagedProperty(value="#{adminSession}")
+	private AdminSessionController adminSession;
+	
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
 		return "product"; 
 	}
 	
 	public String listProducts() {
-		this.products = productFacade.listProducts();
+		adminSession.setProducts( productFacade.listProducts());
 		return "products"; 
 	}
 
 	public String findProduct() {
 		this.product = productFacade.findProductById(id);
-		return "product";
+		return "productDetails";
 	}
 
 	public Long getId() {
@@ -110,6 +114,14 @@ public class ProductController {
 
 	public void setError(String error) {
 		this.error = error;
+	}
+	
+	public AdminSessionController getAdminSession() {
+		return adminSession;
+	}
+	
+	public void setAdminSession(AdminSessionController adminSession) {
+		this.adminSession = adminSession;
 	}
 	
 }

@@ -51,11 +51,10 @@ public class OrderFacade {
 		return customer.getOrders();
 	}
 	
-	public Customer getCustomerFromOrderId(Long id) throws Exception{
-//		Order order = this.findOrderById(id);
+	public Customer getCustomerFromOrderId(Long id) throws Exception {
 		Order order = this.em.find(Order.class, id);
 		if(order == null)
-			return null;
+			throw new Exception();
 		Customer customer = order.getCustomer();
 		return customer;
 	}

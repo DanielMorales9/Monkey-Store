@@ -18,16 +18,6 @@
 		<div>Price: ${productController.product.price}</div>
 		<div>Description: ${productController.product.description}</div>
 
-		<h:form>
-			<div>
-				<h:commandButton value="Insert Another" action="insertNewProduct" />
-			</div>
-			<div>
-				<h:commandButton value="Done" action="adminArea" />
-			</div>
-		</h:form>
-
-
 	</f:view>
 </body>
 </html>

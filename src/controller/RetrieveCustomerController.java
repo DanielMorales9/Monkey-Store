@@ -14,7 +14,6 @@ public class RetrieveCustomerController {
 	@ManagedProperty(value="#{param.id}")
 	private Long id;	
 	
-	@ManagedProperty(value="#{param.error}")
 	private String error;	
 	
 	@EJB(beanName="oFacade")
@@ -26,12 +25,12 @@ public class RetrieveCustomerController {
 		try {
 			customer = orderFacade.getCustomerFromOrderId(id);
 			if (customer == null){
-				error = "Id doesn't exist";
-				return "retrieveCustomer";
+				return "error";
 			}
 		}
 		catch (Exception e) {
-			return "error";
+			error = "Order doesn't exist";
+			return "retrieveCustomer";
 		}
 		return "customerDetails";
 		

@@ -24,6 +24,12 @@
 
 				</h:commandButton>
 			</div>
+			<div>
+				<h:commandButton value="List All Products"
+					action="#{productController.listProducts}">
+
+				</h:commandButton>
+			</div>
 		</h:form>
 
 	</body>
