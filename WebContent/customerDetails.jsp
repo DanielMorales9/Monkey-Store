@@ -18,7 +18,8 @@
 			<div>Password: ${retrieveCustomerController.customer.password}</div>
 			<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
 			<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
-			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>				
+			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>
+			<!-- how to use beans in jsp -->		
 	</body>
 </f:view>
 </html>
