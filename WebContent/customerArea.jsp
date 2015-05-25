@@ -26,26 +26,12 @@
 
 				</h:commandButton>
 			</div>
+			<div>
+				<h:commandButton value="List Orders"
+					action="#{orderController.listOrders}"></h:commandButton>
+			</div>
 		</h:form>
 
-		<h3>Your Orders</h3>
-		<h:form>
-			<table>
-				<tr>
-					<th>Order Id</th>
-					<th>Total Price</th>
-				</tr>
-				<c:forEach var="order" items="#{customerSession.orders}">
-					<tr>
-						<td><h:commandLink value="#{order.id}"
-								action="#{orderController.findOrderById}">
-								<f:param name="orderId" value="#{order.id}" />
-							</h:commandLink></td>
-						<td>${order.total}</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</h:form>
 	</body>
 </f:view>
 </html>

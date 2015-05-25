@@ -66,6 +66,11 @@ public class OrderController {
 		session.setOrders(orders);
 		return "customerArea";
 	}
+	
+	public String listOrders() {
+		session.setOrders(orderFacade.listOrders());
+		return "orders";
+	}
 
 	/**
 	 * -----------------

@@ -27,7 +27,6 @@ public class LoginCustomerController {
 		try {
 			Customer customer = facade.retrieveCustomerByEmailAndPassword(email, password);
 			session.setCustomer(customer);
-			session.setOrders(customer.getOrders());
 			
 		} catch (Exception e) {
 			loginError = "Email or Password is not valid";
