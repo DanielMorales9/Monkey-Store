@@ -86,7 +86,6 @@ _ _ _ _ _
 **6.** Il Sistema mostra i fornitori del prodotto.  
 **7.** L'Amministratore sceglie il fornitore.  
 **8.** L'Amministratore inserisce la quantità dei prodotti forniti.   
-_L'Amministratore ripete il passo 4-8 finché necessario._    
 **9.** Il Sistema mostra le informazioni inserite.  
 **10.** L'Amministratore conferma le informazioni.  
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il fornitore può essere visualizzato tra le informazioni del prodotto. 
