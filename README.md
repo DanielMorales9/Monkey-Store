@@ -70,7 +70,23 @@ _ _ _ _ _
 **3.** L'Amministratore sceglie l'attività “**_Evasione Ordini_**”.  
 **4.** Il Sistema mostra gli ordini chiusi ma non ancora evasi.  
 **5.** L'Amministratore sceglie un ordine da evadere.  
-**6.** Il Sistema evade l'ordine e aggiorna la quantità di prodotti in magazzino.  
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine uò essere visualizzato tra gli ordini effettuati del Cliente. 
+**6.** Il Sistema evade l'ordine.  
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine può essere visualizzato tra gli ordini effettuati dal Cliente. 
 
-
+_ _ _ _ _
+####Caso D'Uso UC7: Inserisci prodotto del fornitore  
+**Attore primario:** Un Amministratore.  
+**_Scenario principale di successo:_**  
+**1.** L'Amministratore vuole inserire un prodotto.    
+**2.** L'Amministratore inserisce il suo indirizzo di posta elettronica e la sua password.  
+&nbsp;&nbsp;&nbsp;&nbsp;Il Sistema verifica la correttezza dei dati immessi, e autentica l'Amministratore.  
+**3.** L'Amministratore sceglie l'attività “**_Inserisci prodotto_**”.  
+**4.** Il Sistema mostra le descrizioni dei prodotti dello store.  
+**5.** L'Amministratore sceglie una descrizione di un prodotto.  
+**6.** Il Sistema mostra i fornitori del prodotto.  
+**7.** L'Amministratore sceglie il fornitore.  
+**8.** L'Amministratore inserisce la quantità dei prodotti forniti.   
+_L'Amministratore ripete il passo 4-8 finché necessario._    
+**9.** Il Sistema mostra le informazioni inserite.  
+**10.** L'Amministratore conferma le informazioni.  
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il fornitore può essere visualizzato tra le informazioni del prodotto. 
