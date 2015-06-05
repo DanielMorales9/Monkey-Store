@@ -1,6 +1,7 @@
 package model.facade;
 
 import java.util.Date;
+
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -56,6 +57,5 @@ public class CustomerFacade {
 			query.setParameter("email", email);
 			return query.getResultList().size() != 0;
  	}
-
 
 }

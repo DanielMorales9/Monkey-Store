@@ -30,6 +30,10 @@
 				<h:commandButton value="List Orders"
 					action="#{orderController.listOrders}"></h:commandButton>
 			</div>
+			<div>
+				<h:commandButton value="Add address"
+					action="#{addressController.addAddress}"></h:commandButton>
+			</div>
 		</h:form>
 
 	</body>

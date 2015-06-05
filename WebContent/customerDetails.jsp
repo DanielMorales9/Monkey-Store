@@ -13,13 +13,16 @@
 <title>Customer's Details</title>
 </head>
 	<body>	
+	
 		<h1>Customer's details</h1>
+		
 			<div>Email: ${retrieveCustomerController.customer.email}</div>
 			<div>Password: ${retrieveCustomerController.customer.password}</div>
 			<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
 			<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
 			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>
-			<!-- how to use beans in jsp -->		
+			<div>Address: ${retrieveCustomerController.customer.address}</div>		
+	
 	</body>
 </f:view>
 </html>

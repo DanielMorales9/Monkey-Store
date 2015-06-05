@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import controller.session.CustomerSessionController;
+import model.Address;
 import model.Customer;
 import model.facade.CustomerFacade;
 
@@ -22,6 +23,7 @@ public class RegisterCustomerController {
 	private String firstName;
 	private String lastName;
 	private Date birthDay;
+	private Address address;
 
 	private String registerError;
 
@@ -39,8 +41,8 @@ public class RegisterCustomerController {
 			setRegisterError("Email already exists");
 			return "registerCustomer";
 		}
-	}	
-
+	}
+	
 	/**
 	 * -----------------
 	 * GETTER AND SETTER
@@ -98,4 +100,13 @@ public class RegisterCustomerController {
 	public void setSession(CustomerSessionController session) {
 		this.session = session;
 	}
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 }
