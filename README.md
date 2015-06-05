@@ -87,3 +87,17 @@ _ _ _ _ _
 **7.** L'Amministratore sceglie il fornitore.  
 **8.** L'Amministratore inserisce la quantità dei prodotti forniti e conferma la fornitura.   
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il fornitore può essere visualizzato tra le informazioni del prodotto. 
+
+
+_ _ _ _ _
+####Caso D'Uso UC8: Inserisci indirizzo del cliente  
+**Attore primario:** Un cliente.  
+**_Scenario principale di successo:_**  
+**1.** Il cliente vuole inserire il proprio indirizzo.    
+**2.** Il Cliente inserisce il suo indirizzo di posta elettronica e la sua password.  
+&nbsp;&nbsp;&nbsp;&nbsp;Il Sistema verifica la correttezza dei dati immessi, e autentica l'Amministratore.  
+**3.** Il cliente sceglie l'attività “**_Aggiungi indirizzo_**”.  
+**4.** Il sistema controlla se il cliente possiede gia un indirizzo o meno.  
+**5.** Il cliente inserisce le informazioni sul prorpio indirizzo.  
+**6.** Il Sistema mostra le informazioni sull'indirizzo inserite dal cliente.   
+&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il cliente può visualizzare i dati del proprio indirizzo. 
