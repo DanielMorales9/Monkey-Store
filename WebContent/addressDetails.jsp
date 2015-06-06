@@ -14,11 +14,11 @@
 	
 		<h1>Your address's details</h1>
 		
-			<div>Street: ${addressController.session.customer.address.street}</div>
-			<div>City: ${addressController.session.customer.address.city}</div>
-			<div>State: ${addressController.session.customer.address.state}</div>
-			<div>Zipcode: ${addressController.session.customer.address.zipcode}</div>
-			<div>Country: ${addressController.session.customer.address.country}</div>
+			<div>Street: ${customerSession.customer.address.street}</div>
+			<div>City: ${customerSession.customer.address.city}</div>
+			<div>State: ${customerSession.customer.address.state}</div>
+			<div>Zipcode: ${customerSession.customer.address.zipcode}</div>
+			<div>Country: ${customerSession.customer.address.country}</div>
 
 	</body>
 </html>

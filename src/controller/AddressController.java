@@ -14,7 +14,7 @@ public class AddressController {
 	
 
 	@EJB(beanName="aFacade")
-	private AddressFacade addressFacade;
+	private AddressFacade facade;
 	
 	/**
 	 * Managed Properties
@@ -39,8 +39,8 @@ public class AddressController {
 			return "addressDetails";									
 	}
 	
-	public String createAddress(){
-		this.address = addressFacade.createAddress(session.getCustomer().getId(), street, city, state, zipcode, country);
+	public String createAddress(){				
+		facade.createAddress(session.getCustomer().getId(), street, city, state, zipcode, country);
 		return "addressDetails";
 	}
 	
@@ -53,11 +53,11 @@ public class AddressController {
 	}
 
 	public AddressFacade getFacade() {
-		return addressFacade;
+		return facade;
 	}
 
 	public void setFacade(AddressFacade facade) {
-		this.addressFacade = facade;
+		this.facade = facade;
 	}
 
 	public String getId() {
@@ -106,14 +106,6 @@ public class AddressController {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public AddressFacade getAddressFacade() {
-		return addressFacade;
-	}
-
-	public void setAddressFacade(AddressFacade addressFacade) {
-		this.addressFacade = addressFacade;
 	}
 
 	public Address getAddress() {

@@ -5,6 +5,7 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
+<%@ page import="model.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <f:view>
@@ -30,10 +31,20 @@
 				<h:commandButton value="List Orders"
 					action="#{orderController.listOrders}"></h:commandButton>
 			</div>
+			
 			<div>
-				<h:commandButton value="Add address"
+				 <h:commandButton value="Address's Details"
 					action="#{addressController.addAddress}"></h:commandButton>
-			</div>
+				 	
+					<%-- <%  Customer customer = customerSession.getCustomer();
+						if (customer.getAddress() == null) { %>
+						<h:commandLink value="Add the address" action="addAddress.jsp">
+						</h:commandLink>
+					<%} else {%>
+						<h:commandLink value="Address's Details" action="addressDetails.jsp">
+						</h:commandLink> 
+					<% } %> --%>
+			</div>		
 		</h:form>
 
 	</body>

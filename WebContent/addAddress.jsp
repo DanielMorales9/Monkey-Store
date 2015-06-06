@@ -12,7 +12,7 @@
 <title>Add address</title>
 	</head>
 		<body>
-			<h1>Add your address's details</h1>
+			<h1>Didn't you insert your address's details? Do it now!</h1>
 			<h:form>
 				<div>
 					Street:
