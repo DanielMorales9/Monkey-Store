@@ -20,8 +20,7 @@
 			<div>Password: ${retrieveCustomerController.customer.password}</div>
 			<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
 			<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
-			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>
-			<div>Address: ${retrieveCustomerController.customer.address}</div>		
+			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>		
 	
 	</body>
 </f:view>

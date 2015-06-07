@@ -10,7 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import model.Address;
 import model.Customer;
 
-@Stateless(name="aFacade")
+@Stateless(name="addressFacade")
 public class AddressFacade {
 	
 	@PersistenceContext(unitName="unit-project")
@@ -35,12 +35,12 @@ public class AddressFacade {
 		return address;
 	}
 	
-	public Address createAddress(Long id, String street, String city, String state, String zipcode, String country) {
+	public Customer createAddress(Long id, String street, String city, String state, String zipcode, String country) {
 		Customer customer = this.em.find(Customer.class, id);
 		Address address = new Address(street, city, state, zipcode, country);
 		customer.setAddress(address);
 		this.em.persist(address);
-		return address;
+		return customer;
 	}
 
 }

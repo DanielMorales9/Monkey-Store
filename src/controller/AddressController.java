@@ -5,6 +5,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import model.Address;
+import model.Customer;
 import model.facade.AddressFacade;
 import controller.session.CustomerSessionController;
 
@@ -13,8 +14,8 @@ import controller.session.CustomerSessionController;
 public class AddressController {
 	
 
-	@EJB(beanName="aFacade")
-	private AddressFacade facade;
+	@EJB(beanName="addressFacade")
+	private AddressFacade addressFacade;
 	
 	/**
 	 * Managed Properties
@@ -40,7 +41,8 @@ public class AddressController {
 	}
 	
 	public String createAddress(){				
-		facade.createAddress(session.getCustomer().getId(), street, city, state, zipcode, country);
+		Customer customer=this.addressFacade.createAddress(session.getCustomer().getId(), street, city, state, zipcode, country);
+		session.setCustomer(customer);
 		return "addressDetails";
 	}
 	
@@ -50,14 +52,6 @@ public class AddressController {
 
 	public void setSession(CustomerSessionController session) {
 		this.session = session;
-	}
-
-	public AddressFacade getFacade() {
-		return facade;
-	}
-
-	public void setFacade(AddressFacade facade) {
-		this.facade = facade;
 	}
 
 	public String getId() {
