@@ -30,6 +30,13 @@
 
 				</h:commandButton>
 			</div>
+			
+			<div>
+				<h:commandButton value="Retrieve an order's customer"
+					action="retrieveCustomer.jsp">
+
+				</h:commandButton>
+			</div>
 		</h:form>
 
 	</body>
