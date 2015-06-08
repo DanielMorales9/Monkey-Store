@@ -37,6 +37,13 @@
 
 				</h:commandButton>
 			</div>
+			
+			<div>
+				<h:commandButton value="Process an order"
+					action="#{processOrderController.findOrdersToProcess}">
+
+				</h:commandButton>
+			</div>
 		</h:form>
 
 	</body>

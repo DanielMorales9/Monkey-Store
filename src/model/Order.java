@@ -3,7 +3,9 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +34,9 @@ public class Order {
 
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date closingDate;
+	
+	@Column
+	private boolean processed;
 
 	@ManyToOne
 	private Customer customer;
@@ -49,6 +54,7 @@ public class Order {
 		this.customer = customer;
 		this.creationDate = new Date();
 		this.orderLines = new ArrayList<OrderLine>();
+		this.processed = false;
 	}
 	
 	public Float getTotal() {
@@ -122,6 +128,14 @@ public class Order {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public boolean isProcessed() {
+		return processed;
+	}
+
+	public void setProcessed(boolean processed) {
+		this.processed = processed;
 	}
 
 }

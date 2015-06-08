@@ -2,11 +2,10 @@ package model.facade;
 
 import java.util.List;
 
-
-
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
 import model.Customer;
@@ -57,5 +56,17 @@ public class OrderFacade {
 			throw new Exception();
 		Customer customer = order.getCustomer();
 		return customer;
+	}
+	
+	public List<Order> findOrdersToProcess(){
+		TypedQuery<Order> q = em.createQuery("SELECT o FROM Order o WHERE o.processed = false",Order.class);
+		List<Order> orders = q.getResultList();
+		return orders;
+	}
+	
+	public Order processOrder(Long id){
+		Order order = this.em.find(Order.class, id);
+		order.setProcessed(true);
+		return order;
 	}
 }
