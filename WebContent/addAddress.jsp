@@ -17,7 +17,7 @@
 				<div>
 					Street:
 					<h:inputText value="#{addressController.street}"
-						required="true" requiredMessage="Id is mandatory" id="street">
+						required="true" requiredMessage="Street is mandatory" id="street">
 					</h:inputText>
 					<h:message for="street" />
 				</div>
@@ -25,38 +25,38 @@
 				<div>
 					City:
 					<h:inputText value="#{addressController.city}"
-						required="true" requiredMessage="Id is mandatory" id="city">
+						required="true" requiredMessage="City is mandatory" id="city">
 					</h:inputText>
 					<h:message for="city" />
 				</div>
 				
 				<div>
+					Country:
+					<h:inputText value="#{addressController.country}"
+						required="true" requiredMessage="Country is mandatory" id="country">
+					</h:inputText>
+					<h:message for="country" />
+				</div>
+				
+				<div>
 					State:
 					<h:inputText value="#{addressController.state}"
-						required="true" requiredMessage="Id is mandatory" id="state">
+						required="true" requiredMessage="State is mandatory" id="state">
 					</h:inputText>
 					<h:message for="state" />
 				</div>
 				
 				
 				<div>
-					Zipcode:
+					Zip Code:
 					<h:inputText value="#{addressController.zipcode}"
-						required="true" requiredMessage="Id is mandatory"
-						converterMessage="Zipcode is not valid" id="zipcode">
+						required="true" requiredMessage="Zip Code is mandatory"
+						converterMessage="Zip Code is not valid" id="zipcode">
 						<f:convertNumber type="number" />
 					</h:inputText>
 					<h:message for="zipcode" />
 				</div>
 				
-				
-				<div>
-					Country:
-					<h:inputText value="#{addressController.country}"
-						required="true" requiredMessage="Id is mandatory" id="country">
-					</h:inputText>
-					<h:message for="country" />
-				</div>
 				
 				<div>
 				<h:commandButton value="Submit"

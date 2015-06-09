@@ -13,7 +13,7 @@ import model.Product;
 @ManagedBean(name="customerSession")
 @SessionScoped
 public class CustomerSessionController {
-	
+
 	private Customer customer;
 	
 	private Order order;

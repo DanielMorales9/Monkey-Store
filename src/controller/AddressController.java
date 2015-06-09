@@ -25,42 +25,21 @@ public class AddressController {
 	
 	private Address address;
 	
-	@ManagedProperty(value="#{param.id}")
-	private String id;
 	private String street;
 	private String city;
 	private String state;
 	private String zipcode;
 	private String country;
-	
-	public String addAddress(){
-		if(session.getCustomer().getAddress() == null)
-			return "addAddress";
-		else 
-			return "addressDetails";									
-	}
+
 	
 	public String createAddress(){				
-		Customer customer=this.addressFacade.createAddress(session.getCustomer().getId(), street, city, state, zipcode, country);
+		Long id = session.getCustomer().getId();
+		Customer customer = addressFacade.
+				createAddress(id, street, city, state, zipcode, country);
 		session.setCustomer(customer);
-		return "addressDetails";
-	}
-	
-	public CustomerSessionController getSession() {
-		return session;
+		return "customerArea";
 	}
 
-	public void setSession(CustomerSessionController session) {
-		this.session = session;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getStreet() {
 		return street;
@@ -108,5 +87,12 @@ public class AddressController {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+	public CustomerSessionController getSession() {
+		return session;
+	}
+	
+	public void setSession(CustomerSessionController session) {
+		this.session = session;
 	}
 }
