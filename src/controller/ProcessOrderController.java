@@ -17,7 +17,6 @@ public class ProcessOrderController {
 	
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	private Order order;
 	private List<Order> ordersToProcess;
 	
 	public String findOrdersToProcess(){
@@ -26,7 +25,7 @@ public class ProcessOrderController {
 	}
 	
 	public String processOrder(){
-		this.order = orderFacade.processOrder(id);
+		this.id = orderFacade.processOrder(id);
 		return "orderProcessed";
 	}
 
@@ -46,12 +45,5 @@ public class ProcessOrderController {
 		this.id = id;
 	}
 
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}
 
 }

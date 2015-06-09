@@ -15,13 +15,24 @@
 	<body>	
 	
 		<h1>Customer's details</h1>
-		
-			<div>Email: ${retrieveCustomerController.customer.email}</div>
-			<div>Password: ${retrieveCustomerController.customer.password}</div>
-			<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
-			<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
-			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>		
-	
+			
+			<h:form>
+			
+				<div>Click on the id to retrieve the address of the customer</div>
+				<div>
+					<h:commandLink 
+							value="#{retrieveCustomerController.customer.id}" action="#{retrieveCustomerController.retrieveAddress}">
+							<f:param name="id" value="#{retrieveCustomerController.customer.id}" />
+					</h:commandLink>
+				</div>
+				<div>Email: ${retrieveCustomerController.customer.email}</div>
+				<div>Password: ${retrieveCustomerController.customer.password}</div>
+				<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
+				<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
+				<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>		
+				
+				<div>Click on the id to retrieve the address of the customer</div>
+			</h:form>
 	</body>
 </f:view>
 </html>
