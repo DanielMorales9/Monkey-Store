@@ -1,5 +1,6 @@
 package model.facade;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -64,9 +65,10 @@ public class OrderFacade {
 		return orders;
 	}
 	
-	public Order processOrder(Long id){
+	public Long processOrder(Long id){
 		Order order = this.em.find(Order.class, id);
 		order.setProcessed(true);
-		return order;
+		order.setEvasionDate(new Date());
+		return id;
 	}
 }

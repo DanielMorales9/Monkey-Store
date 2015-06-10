@@ -14,14 +14,14 @@
 		<h1>Register Customer</h1>
 		<h:form>
 			<div>
-				Firstname:
+				FirstName:
 				<h:inputText value="#{registerCustomer.firstName}"
 					required="true" requiredMessage="Firstname is mandatory"
 					id="firstName" />
 				<h:message for="firstName" />
 			</div>
 			<div>
-				Lastname:
+				LastName:
 				<h:inputText value="#{registerCustomer.lastName}"
 					required="true" requiredMessage="Lastname is mandatory"
 					id="lastName" />
@@ -41,7 +41,7 @@
 				<h:inputText value="#{registerCustomer.birthDay}"
 					required="true" requiredMessage="Date of Birth is mandatory"
 					converterMessage="Date of Birth is not valid" id="bDay">
-					<f:convertDateTime pattern="dd/mm/yyyy" />
+					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</h:inputText>
 				<h:message for="bDay" />
 			</div>

@@ -2,10 +2,12 @@ package controller;
 
 
 import javax.ejb.EJB;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import model.Customer;
+import model.facade.CustomerFacade;
 import model.facade.OrderFacade;
 
 @ManagedBean
@@ -18,6 +20,9 @@ public class RetrieveCustomerController {
 	
 	@EJB(beanName="oFacade")
 	private OrderFacade orderFacade;
+	
+	@EJB(beanName="cFacade")
+	private CustomerFacade customerFacade;
 	
 	private Customer customer;
 	
@@ -34,6 +39,11 @@ public class RetrieveCustomerController {
 		}
 		return "customerDetails";
 		
+	}
+	
+	public String retrieveAddress(){
+		this.customer = customerFacade.findCustomerById(id);
+		return "retrieveAddress";
 	}
 
 	public Long getId() {
@@ -62,4 +72,5 @@ public class RetrieveCustomerController {
 	public void setError(String error) {
 		this.error = error;
 	}
+
 }

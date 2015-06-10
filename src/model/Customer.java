@@ -59,7 +59,7 @@ public class Customer {
 		this.password = password;
 		this.birthDay = birthDay;
 		this.registrationDate = new Date();
-		this.orders = new ArrayList<Order>();		
+		this.orders = new ArrayList<Order>();	
 	}
 	
 	public void checkPassword(String password) throws Exception {

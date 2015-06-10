@@ -14,7 +14,7 @@
 	<body>
 		<h1>Order Processed</h1>
 			<h:form>
-				<div>You have processed the following order : ${processedOrderController.order.id}</div>
+				<div>You have processed the following order : ${processOrderController.id}</div>
 				
 				<div>
 					<h:commandButton value="Home"

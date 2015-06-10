@@ -56,14 +56,14 @@
 			</div>
 
 			<div>
-				<h:commandButton value="Retrieve an order's customer"
+				<h:commandButton value="Retrieve a customer order"
 					action="retrieveCustomer.jsp">
 
 				</h:commandButton>
 			</div>
 
 			<div>
-				<h:commandButton value="Process an order"
+				<h:commandButton value="Dispatch an order"
 					action="#{processOrderController.findOrdersToProcess}">
 
 				</h:commandButton>
