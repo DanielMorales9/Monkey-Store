@@ -12,22 +12,23 @@
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Customer Details</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<title>Customer Area</title>
 	</head>
 	<body>
 		<h1>Customer Area</h1>
-		<div>
-			<b>FirstName:</b> ${customerSession.customer.firstName}
-		</div>
-		<div>
-			<b>LastName:</b> ${customerSession.customer.lastName}
-		</div>
-		<div>
-			<b>Mail</b> ${customerSession.customer.email}
-		</div>
-		<div>
-			<b>Birthday:</b> ${customerSession.customer.birthDay}
-		</div>
+		<address>
+			<strong>${customerSession.customer.firstName}
+				${customerSession.customer.lastName}</strong><br> <a href="mailto:#">${customerSession.customer.email}</a><br>
+			${customerSession.customer.birthDay} 
+		</address>
 
 
 		<%
@@ -38,42 +39,40 @@
 		%>
 		<h5>Add Your Address</h5>
 		<h:form>
-			<h:commandButton value="Add address" action="addAddress.jsp">
-			</h:commandButton>
+			<div class="container">
+				<h:commandButton type="button" styleClass="btn btn-default "
+					value="Add address" action="addAddress.jsp">
+				</h:commandButton>
+			</div>
 		</h:form>
 		<%
 			} else {
 		%>
-		<h3>Address Details</h3>
-		<div>
-			<b>Street:</b> ${customerSession.customer.address.street}
-		</div>
-		<div>
-			<b>City:</b> ${customerSession.customer.address.city}
-		</div>
-		<div>
-			<b>State:</b> ${customerSession.customer.address.state}
-		</div>
-		<div>
-			<b>Zip Code:</b> ${customerSession.customer.address.zipcode}
-		</div>
-		<div>
-			<b>Country:</b> ${customerSession.customer.address.country}
-		</div>
+
+		<address>
+			<strong>Your address</strong><br>
+			${customerSession.customer.address.street},
+			${customerSession.customer.address.city}<br>
+			${customerSession.customer.address.state},${customerSession.customer.address.country},
+			${customerSession.customer.address.zipcode}<br>
+
+		</address>
+
 		<%
 			}
 		%>
 		<h:form>
 			<h4>Options</h4>
-			<div>
-				<h:commandButton value="Create Order"
-					action="#{orderController.createOrder}">
-
-				</h:commandButton>
-			</div>
-			<div>
-				<h:commandButton value="List Orders"
-					action="#{orderController.listOrders}"></h:commandButton>
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<h:commandButton styleClass="btn btn-primary" value="Create Order"
+						action="#{orderController.createOrder}">
+					</h:commandButton>
+				</div>
+				<div class="btn-group">
+					<h:commandButton styleClass="btn btn-info" value="List Orders"
+						action="#{orderController.listOrders}"></h:commandButton>
+				</div>
 			</div>
 		</h:form>
 
