@@ -22,6 +22,7 @@
 		<h4>Add To Order</h4>
 		<h:form>
 			<div>
+				<h:outputText>Quantity: </h:outputText>
 				<h:inputText id="quantity" value="#{orderLineController.quantity}"
 					required="true" requiredMessage="Quantity is mandatory"
 					validatorMessage="Quantity must be positive"

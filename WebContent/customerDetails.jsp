@@ -18,7 +18,7 @@
 		
 			<div>Email: ${retrieveCustomerController.customer.email}</div>
 			<div>Password: ${retrieveCustomerController.customer.password}</div>
-			<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
+			<div>FirstName: ${retrieveCustomerController.customer.firstName}</div>
 			<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
 			<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>		
 	

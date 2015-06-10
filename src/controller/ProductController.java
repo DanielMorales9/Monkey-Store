@@ -13,42 +13,58 @@ import model.facade.ProductFacade;
 
 @ManagedBean
 public class ProductController {
-	
+
 	@EJB(beanName="adminFacade")
 	private AdminFacade adminFacade;
-	
+
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private String name;
 	private String description;
 	private Float price;
 	private String code;
-	
+
 	private String error;
-	
+
 
 	private Product product;
 	private List<Product> products;
-	
+
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
-	
+
 	@ManagedProperty(value="#{adminSession}")
 	private AdminSessionController adminSession;
-	
+
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
 		return "product"; 
 	}
-	
+
 	public String listProducts() {
-		adminSession.setProducts( productFacade.listProducts());
+		adminSession.setProducts(productFacade.listProducts());
 		return "products"; 
 	}
 
 	public String findProduct() {
 		this.product = productFacade.findProductById(id);
-		return "productDetails";
+		return "productDetailsAdmin";
+	}
+
+	public String findProductByName() {
+		String nextPage = "";
+		try {
+			this.product = productFacade.findProductByName(name);
+			nextPage = "productDetailsAdmin";
+		} catch (Exception e) {
+			nextPage = "productNotFound";
+		}
+		return nextPage;
+	}
+
+	public String removeProduct() {
+		productFacade.removeProductById(id);
+		return this.listProducts();
 	}
 
 	public Long getId() {
@@ -74,36 +90,36 @@ public class ProductController {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-	
-	
+
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public Float getPrice() {
 		return price;
 	}
-	
+
 	public void setPrice(Float price) {
 		this.price = price;
 	}
-	
+
 	public String getCode() {
 		return code;
 	}
-	
+
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -115,13 +131,13 @@ public class ProductController {
 	public void setError(String error) {
 		this.error = error;
 	}
-	
+
 	public AdminSessionController getAdminSession() {
 		return adminSession;
 	}
-	
+
 	public void setAdminSession(AdminSessionController adminSession) {
 		this.adminSession = adminSession;
 	}
-	
+
 }

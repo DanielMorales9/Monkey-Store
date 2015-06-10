@@ -7,6 +7,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 @Stateless(name="pFacade")
 public class ProductFacade {
@@ -25,6 +26,11 @@ public class ProductFacade {
 		return product;
 	}
 	
+	public Product findProductByName(String name) {
+		TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p WHERE p.name =:name", Product.class);
+		return query.setParameter("name", name).getSingleResult();
+	}
+	
 	public List<Product> listProducts() {
         CriteriaQuery<Product> cq = em.getCriteriaBuilder().createQuery(Product.class);
         cq.select(cq.from(Product.class));
@@ -36,11 +42,14 @@ public class ProductFacade {
 		this.em.remove(product);
 		return product;
 	}
+
 	
 	public Product removeProductById(Long id) {
 		Product product = this.em.find(Product.class, id);
 		this.em.remove(product);
 		return product;
 	}
+
+	
 	
 }
