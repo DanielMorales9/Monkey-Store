@@ -31,9 +31,9 @@ public class LoginCustomerController {
 			
 		} catch (Exception e) {
 			loginError = "Email or Password is not valid";
-			return "loginCustomer";
+			return "loginCustomer.jsp";
 		}
-		return "customerArea";
+		return "customerArea.jsp";
 	}
 
 	/**

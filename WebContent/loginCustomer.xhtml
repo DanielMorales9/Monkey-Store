@@ -1,48 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></link>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"></link>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Login</title>
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/login.css" />
 </h:head>
 <h:body>
-	<h1>Login Customer</h1>
 	<div class="container">
-		<h:form>
-			<div class="form-group">
-				<label for="email">Email:</label>
-				<h:inputText styleClass="form-control"
-					value="#{loginCustomer.email}" required="true"
-					requiredMessage="Email is mandatory" id="email"
-					validatorMessage="Email is not valid">
-					<f:validateRegex pattern=".+@.+\\.[a-z]+" />
-				</h:inputText>
-				<h:message for="email" />
-			</div>
-			<div class="form-group">
-				<label for="password">Password:</label>
+		<div class="card card-container">
+			<h:form class="form-signin">
+				<div>
+					<label for="email">Email</label>
+					<h:inputText class="form-control" value="#{loginCustomer.email}"
+						required="true" requiredMessage="Email is mandatory" id="email">
+					</h:inputText>
+				</div>
+				<div class="error">
+					<h:message class="errorMessage" for="email" />
+				</div>
+				<div><label for="password">Password</label>
 				<h:inputSecret value="#{loginCustomer.password}" required="true"
 					requiredMessage="Password is mandatory" id="password"
-					styleClass="form-control" />
-				<h:message for="password" />
-			</div>
-			<div class="alert alert-danger" role="alert">
-				<h:outputText value="#{loginCustomer.loginError}" />
-			</div>
-			<div class="btn-group">
-				<h:commandButton action="#{loginCustomer.loginCustomer}"
-					value="Login"></h:commandButton>
-			</div>
-		</h:form>
+					class="form-control" />
+					</div>
+				<div class="error">
+					<h:message class="errorMessage" for="password" />
+				</div>
+				<div>
+					<h:commandButton
+						class="btn btn-lg btn-primary btn-block btn-signin"
+						action="#{loginCustomer.loginCustomer}" value="Login"></h:commandButton>
+				</div>
+				<div class="error">
+					<h:outputText class="errorMessage"
+						value="#{loginCustomer.loginError}" />
+				</div>
+			</h:form>
+		</div>
 	</div>
 </h:body>
 </html>
