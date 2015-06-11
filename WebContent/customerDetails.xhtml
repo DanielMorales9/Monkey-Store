@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/buttons.css" rel="stylesheet" />	
+<title>Customer's Details</title>
+</head>
+	<body>	
+		<h:form>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Customer's Details</div>
+				<div class="panel-body">
+			
+					<div>Click on the id to retrieve the address of the customer</div>
+					<div>
+						<h:commandLink class="btn btn-link"
+							value="#{retrieveCustomerController.customer.id}" action="#{retrieveCustomerController.retrieveAddress}">
+							<f:param name="id" value="#{retrieveCustomerController.customer.id}" />
+						</h:commandLink>
+					</div>
+					<div>Email: ${retrieveCustomerController.customer.email}</div>
+					<div>Password: ${retrieveCustomerController.customer.password}</div>
+					<div>FristName: ${retrieveCustomerController.customer.firstName}</div>
+					<div>LastName: ${retrieveCustomerController.customer.lastName}</div>
+					<div>BirthDay: ${retrieveCustomerController.customer.birthDay}</div>		
+				
+					</div>
+					<div class="panel-footer">
+						<h:commandButton class="btn btn-lg btn-primary" value="Home"
+							action="adminArea.jsp">
+						</h:commandButton>
+					</div>			
+			</div>
+		</h:form>
+	</body>
+</f:view>
+</html>
