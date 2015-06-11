@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/login.css" />
+</h:head>
+<h:body>
+	<div class="container">
+		<div class="card card-container">
+			<h:form class="form-signin">
+				<div>
+					<label for="email">Email</label>
+					<h:inputText class="form-control" value="#{loginCustomer.email}"
+						required="true" requiredMessage="Email is mandatory" id="email">
+					</h:inputText>
+				</div>
+				<div class="error">
+					<h:message class="errorMessage" for="email" />
+				</div>
+				<div><label for="password">Password</label>
+				<h:inputSecret value="#{loginCustomer.password}" required="true"
+					requiredMessage="Password is mandatory" id="password"
+					class="form-control" />
+					</div>
+				<div class="error">
+					<h:message class="errorMessage" for="password" />
+				</div>
+				<div>
+					<h:commandButton
+						class="btn btn-lg btn-primary btn-block btn-signin"
+						action="#{loginCustomer.loginCustomer}" value="Login"></h:commandButton>
+				</div>
+				<div class="error">
+					<h:outputText class="errorMessage"
+						value="#{loginCustomer.loginError}" />
+				</div>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

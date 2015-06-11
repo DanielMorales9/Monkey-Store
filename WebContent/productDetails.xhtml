@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<title>Product</title>
+</head>
+<body>
+	<div class="panel panel-primary">
+			<div class="panel-heading">${productController.product.name}</div>
+			<div class="panel-body">
+				<div>Details</div>
+				<div>Code: ${productController.product.code}</div>
+				<div>Price: ${productController.product.price}</div>
+				<div>Description: ${productController.product.description}</div>
+			</div>
+	</div>	
+</body>
+</f:view>
+</html>

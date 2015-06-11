@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<title>Process an Order</title>
+</head>
+	<body>
+		<h:form>
+			<div class="panel panel-defautl">
+				<div class="panel-body">
+					<h1>Orders to process</h1>
+					<div class="table-responsive">
+						<table class="table table-bordered table-stripped">
+							<tr>
+								<th>Order's id</th>
+								<th>Total price</th>
+							</tr>
+							<tbody>
+								<ui:repeat var="order" items="#{processOrderController.ordersToProcess}">
+									<tr>
+							 		 	<td>
+							 	 		 	<h:commandLink class="btn btn-link" value="#{order.id}"
+												action="#{processOrderController.processOrder}">
+								 				<f:param name="id" value="#{order.id}" />
+											</h:commandLink>
+										 </td> 
+										 <td>${order.total}</td>
+									</tr>
+								</ui:repeat>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>	
+		</h:form>
+	</body>
+</f:view>
+</html>
