@@ -1,5 +1,6 @@
 package controller;
 
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -18,14 +19,20 @@ public class LoginAdminController {
 		@ManagedProperty(value="#{adminSession}")
 		private AdminSessionController session;
 		
+		@ManagedProperty(value = "#{processOrderController}")
+		private ProcessOrderController poc;
+		
+
 		private String email;
 		private String password;
 		
 		private String loginError;
+
 		
 		public String loginAdmin() {
 			try {
 				Admin admin = facade.retrieveAdminByEmailAndPassword(email, password);
+//				poc.findOrders();
 				session.setAdmin(admin);
 				
 			} catch (Exception e) {
@@ -71,5 +78,13 @@ public class LoginAdminController {
 
 		public void setSession(AdminSessionController session) {
 			this.session = session;
+		}
+		
+		public ProcessOrderController getPoc() {
+			return poc;
+		}
+
+		public void setPoc(ProcessOrderController poc) {
+			this.poc = poc;
 		}
 }

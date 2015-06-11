@@ -36,7 +36,7 @@ xmlns:p="http://primefaces.org/ui">
 			</div>
 			<div><h:outputText value="#{loginAdmin.loginError}"/></div>
 			<div>
-				<h:commandButton action="#{loginAdmin.loginAdmin}"
+				<h:commandButton action="#{loginAdmin.loginAdmin}" 
 					value="Submit"></h:commandButton>
 			</div>
 		</h:form>

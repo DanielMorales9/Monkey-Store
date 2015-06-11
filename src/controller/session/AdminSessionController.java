@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import model.Admin;
+import model.Order;
 import model.Product;
 
 
@@ -17,6 +18,8 @@ public class AdminSessionController {
 	private Admin admin;
 	
 	private List<Product> products; 
+	
+	private List<Order> ordersToProcess;
 	
 	
 	/**
@@ -41,7 +44,21 @@ public class AdminSessionController {
 	public void setProducts(List<Product> products) {
 		this.products = products;	
 	}
+
+	public List<Order> getOrdersToProcess() {
+		return ordersToProcess;
+	}
+
+	public void setOrdersToProcess(List<Order> ordersToProcess) {
+		this.ordersToProcess = ordersToProcess;
+	}
 	
-	
+	public void removeOrder(Long id) {
+		for (Order o : this.ordersToProcess) {
+			if (o.getId().equals(id)) {
+				this.ordersToProcess.remove(o);
+			}
+		}
+	}
 
 }
