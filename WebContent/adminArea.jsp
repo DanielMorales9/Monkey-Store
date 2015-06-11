@@ -6,7 +6,9 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

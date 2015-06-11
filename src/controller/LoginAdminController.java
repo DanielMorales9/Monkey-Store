@@ -32,14 +32,13 @@ public class LoginAdminController {
 		public String loginAdmin() {
 			try {
 				Admin admin = facade.retrieveAdminByEmailAndPassword(email, password);
-//				poc.findOrders();
 				session.setAdmin(admin);
 				
 			} catch (Exception e) {
 				loginError = "Email or Password is not valid";
-				return "loginAdmin";
+				return "loginAdmin.jsp";
 			}
-			return "adminArea";
+			return "adminArea.jsp";
 		}
 
 		/**
