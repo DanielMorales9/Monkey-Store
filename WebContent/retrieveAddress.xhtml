@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/buttons.css" rel="stylesheet" />
+	<title>Customer's Address Details</title>
+</head>
+	<body>
+		<h:form>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Customer's Address Details</div>
+			<div class="panel-body">
+
+					<div>Customer's Id: ${retrieveCustomerController.customer.id}</div>
+					<div>Street:
+						${retrieveCustomerController.customer.address.street}</div>
+					<div>City:
+						${retrieveCustomerController.customer.address.city}</div>
+					<div>State:
+						${retrieveCustomerController.customer.address.state}</div>
+					<div>Zipcode:
+						${retrieveCustomerController.customer.address.zipcode}</div>
+					<div>Country:
+						${retrieveCustomerController.customer.address.country}</div>
+			</div>		
+			
+			<div class="panel-footer">
+				<h:commandButton class="btn btn-lg btn-primary" value="Home"
+					action="adminArea.jsp">
+				</h:commandButton>
+			</div>			
+			
+		</div>	
+		</h:form>	
+	</body>
+</f:view>
+</html>
