@@ -25,13 +25,8 @@ public class ProcessOrderController {
 	private List<Order> ordersToProcess;
 	
 	@PostConstruct //fetches the orders to process as soon as is injected
-	public void findOrders() {
+	public void findOrdersToProcess() {
 		this.ordersToProcess = orderFacade.findOrdersToProcess();
-	}
-	
-	public String findOrdersToProcess() {
-		this.ordersToProcess = orderFacade.findOrdersToProcess();
-		return "processOrder";
 	}
 	
 	public String processOrder() {

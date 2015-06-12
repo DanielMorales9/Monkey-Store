@@ -43,19 +43,19 @@ public class ProductController {
 
 	public String listProducts() {
 		adminSession.setProducts(productFacade.listProducts());
-		return "products"; 
+		return "listProducts.xhtml"; 
 	}
 
 	public String findProduct() {
 		this.product = productFacade.findProductById(id);
-		return "productDetailsAdmin";
+		return "productDetailsAdmin.xhtml";
 	}
 
 	public String findProductByName() {
 		String nextPage = "";
 		try {
 			this.product = productFacade.findProductByName(name);
-			nextPage = "productDetailsAdmin";
+			nextPage = "productDetailsAdmin.xhtml";
 		} catch (Exception e) {
 			nextPage = "productNotFound";
 		}

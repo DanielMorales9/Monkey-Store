@@ -64,13 +64,6 @@
 
 				</h:commandButton>
 			</div>
-
-			<!-- 			<div> -->
-			<%-- 				<h:commandButton value="Dispatch an order" --%>
-			<%-- 					action="#{processOrderController.findOrdersToProcess}"> --%>
-
-			<%-- 				</h:commandButton> --%>
-			<!-- 			</div> -->
 		</h:form>
 
 		<div class="panel panel-default orderlist">
@@ -80,7 +73,7 @@
 				<h:form>
 					<c:forEach var="order"
 						items="#{processOrderController.ordersToProcess}">
-						<h:commandLink styleClass="list-group-item" value="#{order.id} price: #{order.total}"
+						<h:commandLink styleClass="list-group-item" value="#{order.id} price: #{order.total}€"
 							action="#{processOrderController.processOrder}">
 							<f:param name="id" value="#{order.id}" />
 						</h:commandLink>

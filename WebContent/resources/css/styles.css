@@ -1,8 +1,6 @@
 .orderlist {
 	width: 400px;
-	height: 100px;
-	position: absolute;
 	right: 10px;
 	top: 80px;
-	border:1px solid black;
 }
+
