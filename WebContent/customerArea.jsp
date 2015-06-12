@@ -41,7 +41,7 @@
 		<h:form>
 			<div class="container">
 				<h:commandButton type="button" styleClass="btn btn-default "
-					value="Add address" action="addAddress.jsp">
+					value="Add address" action="addAddress.xhtml">
 				</h:commandButton>
 			</div>
 		</h:form>

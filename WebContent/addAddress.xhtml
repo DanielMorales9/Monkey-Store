@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/buttons.css" rel="stylesheet" />
+	<title>Add address</title>
+</head>
+		<body>
+		<h:form>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Didn't you insert your address's details? Do it now!</div>
+				<div class="panel-body">
+				
+					<div class="form-group">
+						<label>Street</label>
+						<h:inputText class="form-control" value="#{addressController.street}"
+							required="true" requiredMessage="Street is mandatory" id="street">
+						</h:inputText>
+						<h:message for="street" />
+					</div>
+				
+					<div class="form-group">
+						<label>City</label>
+						<h:inputText class="form-control" value="#{addressController.city}"
+							required="true" requiredMessage="City is mandatory" id="city">
+						</h:inputText>
+						<h:message for="city" />
+					</div>
+				
+					<div class="form-group">
+						<label>Country</label>
+						<h:inputText class="form-control" value="#{addressController.country}"
+							required="true" requiredMessage="Country is mandatory" id="country">
+						</h:inputText>
+						<h:message for="country" />
+					</div>
+				
+					<div class="form-group">
+						<label>State</label>
+						<h:inputText class="form-control" value="#{addressController.state}"
+							required="true" requiredMessage="State is mandatory" id="state">
+						</h:inputText>
+						<h:message for="state" />
+					</div>
+				
+				
+					<div class="form-group">
+						<label>Zip Code</label>
+						<h:inputText class="form-control" value="#{addressController.zipcode}"
+							required="true" requiredMessage="Zip Code is mandatory"
+							converterMessage="Zip Code is not valid" id="zipcode">
+							<f:convertNumber type="number" />
+						</h:inputText>
+						<h:message for="zipcode" />
+					</div>
+				
+				</div>
+				<div class="panel-footer">
+				<h:commandButton class="btn btn-lg btn-primary" value="Submit"
+					action= "#{addressController.createAddress}"></h:commandButton>
+				</div>
+			</div>
+		</h:form>
+		</body>
+</f:view>
+</html>
