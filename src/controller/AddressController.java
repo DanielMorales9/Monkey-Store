@@ -37,7 +37,7 @@ public class AddressController {
 		Customer customer = addressFacade.
 				createAddress(id, street, city, state, zipcode, country);
 		session.setCustomer(customer);
-		return "customerArea";
+		return "customerArea.jsp";
 	}
 
 

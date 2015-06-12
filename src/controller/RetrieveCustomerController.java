@@ -35,15 +35,15 @@ public class RetrieveCustomerController {
 		}
 		catch (Exception e) {
 			error = "Order doesn't exist";
-			return "retrieveCustomer";
+			return "retrieveCustomer.jsp";
 		}
-		return "customerDetails";
+		return "customerDetails.xhtml";
 		
 	}
 	
 	public String retrieveAddress(){
 		this.customer = customerFacade.findCustomerById(id);
-		return "retrieveAddress";
+		return "retrieveAddress.xhtml";
 	}
 
 	public Long getId() {

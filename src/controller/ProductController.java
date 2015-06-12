@@ -38,7 +38,7 @@ public class ProductController {
 
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
-		return "product"; 
+		return "product.xhtml"; 
 	}
 
 	public String listProducts() {

@@ -36,7 +36,7 @@ public class LoginAdminController {
 				
 			} catch (Exception e) {
 				loginError = "Email or Password is not valid";
-				return "loginAdmin.jsp";
+				return "loginAdmin.xhtml";
 			}
 			return "adminArea.jsp";
 		}
