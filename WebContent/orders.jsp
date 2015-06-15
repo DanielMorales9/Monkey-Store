@@ -7,17 +7,23 @@
 <html>
 <f:view>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Orders</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/styles.css" rel="stylesheet" />
+	<title>Orders</title>
 </head>
 <body>
-	<h3>Your Orders</h3>
-	<h:form>
-		<table>
+<h:form>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Your orders</div>
+		<div class="panel-body">
+		<div class="table-responsive">
+		<table class="table table-bordered table-stripped">
 			<tr>
 				<th>Order Id</th>
 				<th>Total Price</th>
 			</tr>
+			<tbody>
 			<c:forEach var="order" items="#{customerSession.orders}">
 				<tr>
 					<td><h:commandLink value="#{order.id}"
@@ -27,8 +33,12 @@
 					<td>${order.total}</td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
-	</h:form>
+		</div>
+		</div>
+	</div>
+</h:form>
 </body>
 </f:view>
 </html>

@@ -73,7 +73,7 @@ public class OrderController {
 	
 	public String listOrders() {
 		session.setOrders(orderFacade.listCustomerOrders(session.getCustomer().getId()));
-		return "orders";
+		return "orders.jsp";
 	}
 
 	@PostConstruct
