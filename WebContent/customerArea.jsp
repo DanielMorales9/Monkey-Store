@@ -82,7 +82,7 @@
 							<c:forEach var="order" items="#{orderController.orders}">
 								<h:commandLink styleClass="list-group-item"
 									action="#{orderController.findOrderById}">
-									<b>${order.id}</b> - price: ${order.total}€
+									<b>${order.id}</b> - Total: ${order.total}€
 							<f:param name="orderId" value="#{order.id}" />
 								</h:commandLink>
 

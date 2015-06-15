@@ -72,7 +72,7 @@
 					<c:forEach var="order"
 						items="#{processOrderController.ordersToProcess}">
 						<h:commandLink styleClass="list-group-item"
-							value="#{order.id} price: #{order.total}€"
+							value="#{order.id} Total: #{order.total}€"
 							action="#{processOrderController.processOrder}">
 							<f:param name="id" value="#{order.id}" />
 						</h:commandLink>
