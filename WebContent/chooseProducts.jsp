@@ -6,36 +6,49 @@
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Products</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="resources/css/styles.css" rel="stylesheet" />
+<title>Choose Products</title>
 	</head>
 	<body>
-		<h1>Products</h1>
-		<h:form>
-			<table>
-				<tr>
-					<th>Name</th>
-					<th>Price</th>
-				</tr>
-				<c:forEach var="product" items="#{customerSession.products}">
-					<tr>
-						<td><h:commandLink value="#{product.name}"
-								action="#{orderLineController.findProductById}">
-								<f:param name="productId" value="#{product.id}" />
-							</h:commandLink></td>
-						<td>${product.price}</td>
-					</tr>
-				</c:forEach>
-			</table>
-			<div>
-				<h:commandButton value="End Order"
-					action="#{orderController.endOrder}"></h:commandButton>
-			</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Products</div>
+			<div class="panel-body">
+				<h:form>
+					<div class="tale-responsive">
+						<table class="table table-bordered table-stripped">
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Price</th>
+								
+							</tr>
+							<c:forEach var="product" items="#{customerSession.products}">
+								<tr>
+									<td><h:commandLink value="#{product.name}"
+											action="#{orderLineController.findProductById}">
+											<f:param name="productId" value="#{product.id}" />
+										</h:commandLink></td>
+									<td>${product.description}</td>
+									<td>${product.price}</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<div class="btn-group">
+							<h:commandButton styleClass="btn btn-primary btn-block"
+								value="End Order" action="#{orderController.endOrder}"></h:commandButton>
 
-			<div>
-				<h:commandButton value="Cancel Order"
-					action="#{orderController.cancelOrder}"></h:commandButton>
+							<h:commandButton value="Cancel Order"
+								styleClass="btn btn-danger btn-block"
+								action="#{orderController.cancelOrder}"></h:commandButton>
+						</div>
+					</div>
+				</h:form>
 			</div>
-		</h:form>
+		</div>
+
+
 
 	</body>
 </f:view>

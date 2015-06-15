@@ -37,7 +37,7 @@
 				<div class="navbar-header">
 					<h:form>
 						<h:commandLink styleClass="navbar-text" style="font-size: large;"
-							action="index.xhtml">
+							action="customerArea.jsp">
 							Monkey Store
 						</h:commandLink>
 					</h:form>
@@ -55,7 +55,7 @@
 		<ul class="nav nav-tabs" id="myTab">
 			<li class="active"><a data-toogle="tab" href="#home">Home</a></li>
 			<li><a data-toogle="tab" href="#profile">Profile</a></li>
-			<li><a data-toogle="tab" href="#products">Produts</a></li>
+			<li><a data-toogle="tab" href="#products">Products</a></li>
 		</ul>
 
 
@@ -71,10 +71,6 @@
 							</h:commandLink>
 							<h:commandLink styleClass="list-group-item"
 								value="List My Orders" action="#{orderController.listOrders}"></h:commandLink>
-							<h:commandLink value="List All Products"
-								styleClass="list-group-item"
-								action="#{productController.listProducts}">
-							</h:commandLink>
 						</h:form>
 					</div>
 				</div>
@@ -103,6 +99,7 @@
 						<thead>
 							<tr>
 								<th>Name</th>
+								<th>Description</th>
 								<th>Price</th>
 							</tr>
 						</thead>
@@ -114,6 +111,7 @@
 												action="#{productController.findProductById}">
 												<f:param name="id" value="#{product.id}" />
 											</h:commandLink></td>
+										<td>${product.description}</td>
 										<td>${product.price}€</td>
 									</tr>
 								</c:forEach>
