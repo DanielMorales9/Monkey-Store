@@ -21,7 +21,7 @@
 				Order number:
 				<h:outputText value="#{customerSession.order.id}"></h:outputText>
 			</h1>
-			<div class="tale-responsive">
+			<div class="table-responsive">
 			<table class="table table-bordered table-stripped">
 				<tr>
 					<th>Name</th>

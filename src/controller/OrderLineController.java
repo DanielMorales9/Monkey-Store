@@ -56,7 +56,7 @@ public class OrderLineController {
 		orderLineFacade.addOrderLineToOrder(session.getOrder().getId(),
 				session.getProduct(), quantity);
 		listProducts();
-		return "chooseProducts";
+		return "chooseProducts.jsp";
 	}
 	
 	public String updateOrderLineQuantity() {

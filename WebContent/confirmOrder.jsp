@@ -4,44 +4,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
 <title>Confirm Order</title>
 </head>
 <body>
 	<f:view>
-		<h1>Products</h1>
-		<h:form>
-			<table>
-				<tr>
-					<th>Name</th>
-					<th>Price</th>
-					<th>Quantity</th>
 
-				</tr>
-				<c:forEach var="line" items="#{customerSession.order.orderLines}">
-					<tr>
-						<td><h:commandLink
-								action="#{orderLineController.findOrderLineById}"
-								value="#{line.product.name}">
-								<f:param name="orderLineId" value="#{line.id}" />
-							</h:commandLink></td>
-						<td>${line.product.price}</td>
-						<td>${line.quantity}</td>
-					</tr>
-				</c:forEach>
-			</table>
-			
-			<div>Total Price: <h:outputText value="#{customerSession.order.total}"></h:outputText> </div>
-			
-			<div>
-				<h:commandButton value="Confirm" action="#{orderController.confirmOrder}"></h:commandButton>
-			</div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Your Order</div>
+			<div class="panel-body">
 
-			<div>
-				<h:commandButton value="Cancel Order"
-					action="#{orderController.cancelOrder}"></h:commandButton>
+				<h:form>
+					<div class="table-responsive">
+						<table class="table table-bordered table-stripped">
+							<tr>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+
+							</tr>
+							<c:forEach var="line" items="#{customerSession.order.orderLines}">
+								<tr>
+									<td><h:commandLink
+											action="#{orderLineController.findOrderLineById}"
+											value="#{line.product.name}">
+											<f:param name="orderLineId" value="#{line.id}" />
+										</h:commandLink></td>
+									<td>${line.product.price}</td>
+									<td>${line.quantity}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					<div class="panel-footer">
+						<b>Total Price:</b>
+						<h:outputText value="#{customerSession.order.total}€"></h:outputText>
+					</div>
+					<div class="btn-group">
+						<h:commandButton value="Confirm"
+							styleClass="btn btn-primary btn-block"
+							action="#{orderController.confirmOrder}"></h:commandButton>
+
+						<h:commandButton value="Cancel Order"
+							styleClass="btn btn-danger btn-block"
+							action="#{orderController.cancelOrder}"></h:commandButton>
+					</div>
+				</h:form>
 			</div>
-		</h:form>
+		</div>
 
 	</f:view>
 </body>

@@ -6,7 +6,6 @@
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="resources/css/bootstrap.min.css" rel="stylesheet" />
 <link href="resources/css/styles.css" rel="stylesheet" />
 <title>Choose Products</title>
@@ -16,7 +15,7 @@
 			<div class="panel-heading">Products</div>
 			<div class="panel-body">
 				<h:form>
-					<div class="tale-responsive">
+					<div class="table-responsive">
 						<table class="table table-bordered table-stripped">
 							<tr>
 								<th>Name</th>
