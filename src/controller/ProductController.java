@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -61,10 +62,20 @@ public class ProductController {
 		}
 		return nextPage;
 	}
+	
+	public String findProductById() {
+		this.product = productFacade.findProductById(id);
+		return "productDetails.xhtml";
+	}
 
 	public String removeProduct() {
 		productFacade.removeProductById(id);
 		return this.listProducts();
+	}
+	
+	@PostConstruct
+	public void listAllProducts() {
+		this.products = productFacade.listProducts();
 	}
 
 	public Long getId() {

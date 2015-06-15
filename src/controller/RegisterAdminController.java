@@ -31,11 +31,11 @@ public class RegisterAdminController {
 			Admin admin = 
 					facade.createAdmin(firstName, lastName, email, password);
 			session.setAdmin(admin);
-			return "adminArea";
+			return "adminArea.xhtml";
 		}
 		else {
 			setRegisterError("Email already exists");
-			return "registerAdmin";
+			return "registerAdmin.xhtml";
 		}
 	}	
 

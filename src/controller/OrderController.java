@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -32,7 +33,9 @@ public class OrderController {
 	private CustomerSessionController session;
 	@ManagedProperty(value="#{param.orderId}")
 	private Long orderId;
-
+	
+	private List<Order> orders;
+	
 	public String createOrder() {
 		Order order = orderFacade.createOrder(session.getCustomer().getId());
 		session.setOrder(order);
@@ -50,6 +53,7 @@ public class OrderController {
 		orderFacade.removeOrderById(session.getOrder().getId());
 		return "customerArea";
 	}
+	
 
 	private void listProducts() {
 		session.setProducts(productFacade.listProducts());
@@ -60,7 +64,7 @@ public class OrderController {
 		session.setOrder(order);
 		return "orderLines";
 	}
-	
+
 	public String confirmOrder() {
 		List<Order> orders = orderFacade.listCustomerOrders(session.getCustomer().getId());
 		session.setOrders(orders);
@@ -68,10 +72,15 @@ public class OrderController {
 	}
 	
 	public String listOrders() {
-		session.setOrders(orderFacade.listOrders());
+		session.setOrders(orderFacade.listCustomerOrders(session.getCustomer().getId()));
 		return "orders";
 	}
 
+	@PostConstruct
+	public void listMyOrders() {
+		this.orders = orderFacade.listCustomerOrders(session.getCustomer().getId());
+	}
+	
 	/**
 	 * -----------------
 	 * GETTER AND SETTER
@@ -87,6 +96,14 @@ public class OrderController {
 		this.orderId = orderId;
 	}
 	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	public CustomerSessionController getSession() {
 		return session;
 	}

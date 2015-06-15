@@ -7,75 +7,173 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <%@ page import="model.*"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <f:view>
 	<head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-<!-- Optional theme -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
+<link href="resources/css/styles.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#myTab a").click(function(e) {
+			e.preventDefault();
+			$(this).tab('show');
+		});
+	});
+</script>
 <title>Customer Area</title>
 	</head>
 	<body>
-		<h1>Customer Area</h1>
-		<address>
-			<strong>${customerSession.customer.firstName}
-				${customerSession.customer.lastName}</strong><br> <a href="mailto:#">${customerSession.customer.email}</a><br>
-			${customerSession.customer.birthDay} 
-		</address>
-
-
-		<%
-			CustomerSessionController cSession = (CustomerSessionController) session
-						.getAttribute("customerSession");
-
-				if (cSession.getCustomer().getAddress() == null) {
-		%>
-		<h5>Add Your Address</h5>
-		<h:form>
-			<div class="container">
-				<h:commandButton type="button" styleClass="btn btn-default "
-					value="Add address" action="addAddress.xhtml">
-				</h:commandButton>
-			</div>
-		</h:form>
-		<%
-			} else {
-		%>
-
-		<address>
-			<strong>Your address</strong><br>
-			${customerSession.customer.address.street},
-			${customerSession.customer.address.city}<br>
-			${customerSession.customer.address.state},${customerSession.customer.address.country},
-			${customerSession.customer.address.zipcode}<br>
-
-		</address>
-
-		<%
-			}
-		%>
-		<h:form>
-			<h4>Options</h4>
-			<div class="btn-toolbar">
-				<div class="btn-group">
-					<h:commandButton styleClass="btn btn-primary" value="Create Order"
-						action="#{orderController.createOrder}">
-					</h:commandButton>
+		<div class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<h:form>
+						<h:commandLink styleClass="navbar-text" style="font-size: large;"
+							action="index.xhtml">
+							Monkey Store
+						</h:commandLink>
+					</h:form>
 				</div>
-				<div class="btn-group">
-					<h:commandButton styleClass="btn btn-info" value="List Orders"
-						action="#{orderController.listOrders}"></h:commandButton>
+
+				<ul class="nav navbar-nav">
+					<li class="navbar-text">Hi
+						${customerSession.customer.firstName}!</li>
+					<li class="navbar-text">${customerSession.customer.email}</li>
+				</ul>
+
+			</div>
+		</div>
+
+		<ul class="nav nav-tabs" id="myTab">
+			<li class="active"><a data-toogle="tab" href="#home">Home</a></li>
+			<li><a data-toogle="tab" href="#profile">Profile</a></li>
+			<li><a data-toogle="tab" href="#products">Produts</a></li>
+		</ul>
+
+
+		<div class="tab-content">
+
+			<div class="tab-pane fade in active" id="home">
+				<div class="panel panel-success actionlist">
+					<div class="panel-heading">Actions</div>
+					<div class="list-group">
+						<h:form>
+							<h:commandLink styleClass="list-group-item" value="Create Order"
+								action="#{orderController.createOrder}">
+							</h:commandLink>
+							<h:commandLink styleClass="list-group-item"
+								value="List My Orders" action="#{orderController.listOrders}"></h:commandLink>
+							<h:commandLink value="List All Products"
+								styleClass="list-group-item"
+								action="#{productController.listProducts}">
+							</h:commandLink>
+						</h:form>
+					</div>
+				</div>
+
+				<div class="panel panel-primary orderlist">
+					<div class="panel-heading">Orders</div>
+					<div class="list-group">
+						<h:form>
+							<c:forEach var="order" items="#{orderController.orders}">
+								<h:commandLink styleClass="list-group-item"
+									action="#{orderController.findOrderById}">
+									<b>${order.id}</b> - price: ${order.total}€
+							<f:param name="orderId" value="#{order.id}" />
+								</h:commandLink>
+
+							</c:forEach>
+						</h:form>
+					</div>
 				</div>
 			</div>
-		</h:form>
 
+			<div class="tab-pane" id="products">
+				<div class="panel panel-warning">
+					<div class="panel-heading">Products Avaiable</div>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<h:form>
+								<c:forEach var="product" items="#{productController.products}">
+									<tr>
+										<td><h:commandLink value="#{product.name}"
+												action="#{productController.findProductById}">
+												<f:param name="id" value="#{product.id}" />
+											</h:commandLink></td>
+										<td>${product.price}€</td>
+									</tr>
+								</c:forEach>
+							</h:form>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div id="profile" class="tab-pane">
+				<div class="jumbotron">
+					<div class="container">
+						<h1>${customerSession.customer.firstName}
+							${customerSession.customer.lastName}</h1>
+						<p>
+							<a href="mailto:#">${customerSession.customer.email}</a><br>
+							${customerSession.customer.birthDay}
+						</p>
+					</div>
+				</div>
+				<div class="page-header">
+					<%
+						CustomerSessionController cSession = (CustomerSessionController) session
+									.getAttribute("customerSession");
+
+							if (cSession.getCustomer().getAddress() == null) {
+					%>
+					<div class="container">
+						<div class="panel panel-warning">
+							<div class="panel-heading">Add Your Address</div>
+							<div class="panel-body">
+								<h:form>
+									<h:commandButton styleClass="btn btn-primary"
+										value="Add address" action="addAddress.xhtml">
+									</h:commandButton>
+								</h:form>
+							</div>
+						</div>
+						<%
+							} else {
+						%>
+
+						<div class="panel panel-info">
+							<div class="panel-heading">Your Address</div>
+							<div class="panel-body">
+								<address>
+									<b>${customerSession.customer.address.street}</b>,
+									${customerSession.customer.address.city}<br>
+									${customerSession.customer.address.state},${customerSession.customer.address.country},
+									${customerSession.customer.address.zipcode}<br>
+								</address>
+							</div>
+						</div>
+						<%
+							}
+						%>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </f:view>
 </html>
