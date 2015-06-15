@@ -31,7 +31,7 @@ public class ProcessOrderController {
 	
 	public String processOrder() {
 		this.id = orderFacade.processOrder(id);
-		return "orderProcessed";
+		return "orderProcessed.xhtml";
 	}
 
 	public List<Order> getOrdersToProcess() {
