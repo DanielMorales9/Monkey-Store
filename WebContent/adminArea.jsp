@@ -1,23 +1,20 @@
-<%@page import="controller.ProcessOrderController"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Admin Area</title>
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+<link href="resources/css/styles.css" rel="stylesheet" />
+</head>
 <f:view>
-	<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Admin Details</title>
-<link href="resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="resources/css/styles.css" rel="stylesheet">
-	</head>
 	<body>
-		<div class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<p class="navbar-text" style="font-size: large;">Monkey Store</p>
@@ -41,9 +38,6 @@
 			</div>
 		</div>
 
-		<br>
-		<br>
-		<br>
 		<h:form>
 			<div>
 				<h:commandButton value="Insert New Product"
@@ -73,7 +67,8 @@
 				<h:form>
 					<c:forEach var="order"
 						items="#{processOrderController.ordersToProcess}">
-						<h:commandLink styleClass="list-group-item" value="#{order.id} price: #{order.total}€"
+						<h:commandLink styleClass="list-group-item"
+							value="#{order.id} price: #{order.total}€"
 							action="#{processOrderController.processOrder}">
 							<f:param name="id" value="#{order.id}" />
 						</h:commandLink>
@@ -82,7 +77,7 @@
 				</h:form>
 			</div>
 		</div>
-	
+
 	</body>
 </f:view>
 </html>

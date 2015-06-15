@@ -35,7 +35,7 @@ public class RegisterCustomerController {
 			Customer customer = 
 					facade.createCustomer(email, password, firstName, lastName, birthDay);
 			session.setCustomer(customer);
-			return "customerArea";
+			return "customerArea.jsp";
 		}
 		else {
 			setRegisterError("Email already exists");
