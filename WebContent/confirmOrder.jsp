@@ -39,7 +39,7 @@
 					</div>
 					<div class="panel-footer">
 						<b>Total Price:</b>
-						${customerSession.order.total}€
+						${customerSession.order.total} 
 					</div>
 					<div class="btn-group">
 						<h:commandButton value="Confirm"

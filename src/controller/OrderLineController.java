@@ -5,7 +5,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import controller.session.CustomerSessionController;
-import model.Order;
 import model.OrderLine;
 import model.facade.OrderFacade;
 import model.facade.OrderLineFacade;
@@ -42,15 +41,6 @@ public class OrderLineController {
 		session.setOrderLine(ol);
 		return "orderLineDetails.xhtml";
 	}
-
-	
-	public String cancelOrderLine() {
-		orderLineFacade.removeOrderLineFromOrder(session.getOrder().getId(),
-				orderLineId);
-		Order order = orderFacade.findOrderById(session.getOrder().getId());
-		session.setOrder(order);
-		return "confirmOrder";
-	}
 	
 	public String addOrderLineToOrder() {
 		orderLineFacade.addOrderLineToOrder(session.getOrder().getId(),
@@ -63,7 +53,7 @@ public class OrderLineController {
 		orderLineFacade.updateOrderLineQuantity(session.getOrderLine().getId(), 
 				quantity);
 		session.setOrder(orderFacade.findOrderById(session.getOrder().getId()));
-		return "confirmOrder";	
+		return "confirmOrder.jsp";	
 	}
 	
 	private void listProducts() {
