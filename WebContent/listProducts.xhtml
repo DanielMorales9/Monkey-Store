@@ -12,6 +12,35 @@
 		<link rel="stylesheet" type="text/css" href="resources/css/styles.css" />
 	</h:head>
 	<body>
+		<div class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<h:form>
+						<h:commandLink styleClass="navbar-text" style="font-size: large;"
+							action="adminArea.jsp">
+							Monkey Store
+						</h:commandLink>
+					</h:form>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="navbar-text">Hi ${adminSession.admin.firstName}!</li>
+					<li class="navbar-text">${adminSession.admin.email}</li>
+				</ul>
+
+				<h:form styleClass="navbar-form navbar-left">
+					<div class="form-group">
+						<h:inputText styleClass="form-control"
+							value="#{productController.name}" />
+
+					</div>
+					<h:commandButton type="submit" styleClass="btn btn-default"
+						value="Submit" action="#{productController.findProductByName}">
+					</h:commandButton>
+
+				</h:form>
+			</div>
+		</div>
+		
 		<h:form>
 			<div class="panel panel-default">
 				<div class="panel-body">Product's List</div>
@@ -19,7 +48,7 @@
 					<ui:repeat var="product" value="#{adminSession.products}">
 						<h:commandLink styleClass="list-group-item"
 							action="#{productController.findProduct}">
-							<div class="list-group-item-heading">#{product.name}</div>
+							<div class="list-group-item-heading" style="font-size: large;">#{product.name}</div>
 							<div class="list-group-item-text"> #{product.description}</div>
 							<div> Price: #{product.price}€</div>
 							

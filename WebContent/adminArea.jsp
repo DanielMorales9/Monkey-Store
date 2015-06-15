@@ -17,7 +17,12 @@
 		<div class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<p class="navbar-text" style="font-size: large;">Monkey Store</p>
+					<h:form>
+						<h:commandLink styleClass="navbar-text" style="font-size: large;"
+							action="adminArea.jsp">
+							Monkey Store
+						</h:commandLink>
+					</h:form>
 				</div>
 				<ul class="nav navbar-nav">
 					<li class="navbar-text">Hi ${adminSession.admin.firstName}!</li>
@@ -38,27 +43,26 @@
 			</div>
 		</div>
 
-		<h:form>
-			<div>
-				<h:commandButton value="Insert New Product"
-					action="insertNewProduct.jsp">
-
-				</h:commandButton>
+		<div class="actionlist panel panel-default">
+			<div class="panel-body">Actions</div>
+			<div class="list-group">
+				<h:form>
+					<h:commandLink value="Insert New Product"
+						styleClass="list-group-item" action="insertNewProduct.xhtml">
+					</h:commandLink>
+					<h:commandLink value="List All Products"
+						styleClass="list-group-item"
+						action="#{productController.listProducts}">
+					</h:commandLink>
+					<h:commandLink value="Retrieve a Customer Order"
+						styleClass="list-group-item" action="retrieveCustomer.jsp">
+					</h:commandLink>
+					<h:commandLink value="Register New Admin"
+						styleClass="list-group-item" action="registerAdmin.jsp">
+					</h:commandLink>
+				</h:form>
 			</div>
-			<div>
-				<h:commandButton value="List All Products"
-					action="#{productController.listProducts}">
-
-				</h:commandButton>
-			</div>
-
-			<div>
-				<h:commandButton value="Retrieve a customer order"
-					action="retrieveCustomer.jsp">
-
-				</h:commandButton>
-			</div>
-		</h:form>
+		</div>
 
 		<div class="panel panel-default orderlist">
 			<div class="panel-body">Orders to Process</div>

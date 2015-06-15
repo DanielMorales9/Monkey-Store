@@ -3,5 +3,13 @@
 	width: 400px;
 	right: 10px;
 	top: 100px;
+	border: black;
+}
+
+.actionlist {
+	position: absolute;
+	width: 300px;
+	left: 10px;
+	top: 100px;
 }
 
