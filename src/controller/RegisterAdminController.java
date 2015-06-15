@@ -31,7 +31,7 @@ public class RegisterAdminController {
 			Admin admin = 
 					facade.createAdmin(firstName, lastName, email, password);
 			session.setAdmin(admin);
-			return "adminArea.xhtml";
+			return "adminArea.jsp";
 		}
 		else {
 			setRegisterError("Email already exists");
