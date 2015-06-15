@@ -40,7 +40,7 @@ public class OrderLineController {
 	public String findOrderLineById() {
 		OrderLine ol = orderLineFacade.findOrderLineById(orderLineId);
 		session.setOrderLine(ol);
-		return "orderLineDetails";
+		return "orderLineDetails-xhtml";
 	}
 
 	

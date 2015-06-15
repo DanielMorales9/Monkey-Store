@@ -23,7 +23,7 @@ public class OrderLineDetailsController {
 	public String findOrderLineById() {
 		OrderLine ol = facade.findOrderLineById(id);
 		session.setOrderLine(ol);
-		return "orderLine";
+		return "orderLine.xhtml";
 	}
 	
 	/**

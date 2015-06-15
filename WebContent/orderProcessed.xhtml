@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<f:view>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/buttons.css" rel="stylesheet" />
+	<title>Order Processed</title>
+</head>
+	<body>
+	<h:form>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Order Processed</div>
+			<div class="panel-body">
+				<div>You have processed the following order : ${processOrderController.id}</div>
+			</div>	
+			
+			<div class="panel-footer">
+					<h:commandButton value="Home"
+					action="adminArea.jsp">
+					</h:commandButton>							
+			</div>
+		</div>
+	</h:form>
+	</body>
+</f:view>
+</html>
