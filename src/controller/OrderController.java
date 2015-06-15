@@ -62,7 +62,7 @@ public class OrderController {
 	public String findOrderById() {
 		Order order = orderFacade.findOrderById(orderId);
 		session.setOrder(order);
-		return "orderLines";
+		return "orderLines.jsp";
 	}
 
 	public String confirmOrder() {
