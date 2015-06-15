@@ -55,10 +55,10 @@
 						action="#{productController.listProducts}">
 					</h:commandLink>
 					<h:commandLink value="Retrieve a Customer Order"
-						styleClass="list-group-item" action="retrieveCustomer.jsp">
+						styleClass="list-group-item" action="retrieveCustomer.xhtml">
 					</h:commandLink>
 					<h:commandLink value="Register New Admin"
-						styleClass="list-group-item" action="registerAdmin.jsp">
+						styleClass="list-group-item" action="registerAdmin.xhtml">
 					</h:commandLink>
 				</h:form>
 			</div>

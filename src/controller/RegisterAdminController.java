@@ -14,10 +14,12 @@ public class RegisterAdminController {
 	@EJB(beanName="aFacade")
 	private AdminFacade facade;
 
-	private String email;
-	private String password;
+	
 	private String firstName;
 	private String lastName;
+	private String email;
+	private String password;
+	
 
 	private String registerError;
 

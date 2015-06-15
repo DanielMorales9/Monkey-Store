@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/buttons.css" rel="stylesheet" />
+	<title>Retrieve Customer</title>
+</h:head>
+<h:body>
+	<div class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<h:form>
+					<h:commandLink styleClass="navbar-text" style="font-size: large;"
+						action="adminArea.jsp">
+							Monkey Store
+						</h:commandLink>
+				</h:form>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="navbar-text">Hi ${adminSession.admin.firstName}!</li>
+				<li class="navbar-text">${adminSession.admin.email}</li>
+			</ul>
+
+			<h:form styleClass="navbar-form navbar-left">
+				<div class="form-group">
+					<h:inputText styleClass="form-control"
+						value="#{productController.name}" />
+
+				</div>
+				<h:commandButton type="submit" styleClass="btn btn-default"
+					value="Submit" action="#{productController.findProductByName}">
+				</h:commandButton>
+
+			</h:form>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="input-group">
+				<h:inputText value="#{retrieveCustomerController.id}"
+					styleClass="form-control" required="true"
+					requiredMessage="Id is mandatory" id="id"
+					converterMessage="Id must be a number">
+					<f:convertNumber type="number" />
+				</h:inputText>
+				<span style="display: inline;"> <h:commandButton
+						styleClass="btn btn-default" value="Insert"
+						action="#{retrieveCustomerController.findCustomer}">
+					</h:commandButton>
+				</span>
+
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
