@@ -34,7 +34,7 @@ public class OrderLineController {
 	
 	public String findProductById() {
 		session.setProduct(productFacade.findProductById(productId));
-		return "addOrderLine";
+		return "addOrderLine.xhtml";
 	}
 	
 	public String findOrderLineById() {
