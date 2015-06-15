@@ -7,33 +7,44 @@
 <html>
 <f:view>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Order Details</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="resources/css/styles.css" rel="stylesheet" />
+	<title>Order Details</title>
 </head>
 <body>
-	<h1>
-		Order number:
-		<h:outputText value="#{customerSession.order.id}"></h:outputText>
-	</h1>
-	<h:form>
-		<table>
-			<tr>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-			</tr>
-			<c:forEach var="line" items="#{customerSession.order.orderLines}">
+<h:form>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Order's details</div>
+		<div class="panel-body">
+			<h1>
+				Order number:
+				<h:outputText value="#{customerSession.order.id}"></h:outputText>
+			</h1>
+			<div class="tale-responsive">
+			<table class="table table-bordered table-stripped">
 				<tr>
-					<td><h:commandLink value="#{line.product.name}"
+					<th>Name</th>
+					<th>Price</th>
+					<th>Quantity</th>
+				</tr>
+				<tbody>
+				<c:forEach var="line" items="#{customerSession.order.orderLines}">
+				<tr>
+					<td><h:commandLink  value="#{line.product.name}"
 							action="#{orderLineDetails.findOrderLineById}">
 							<f:param name="id" value="#{line.id}" />
 						</h:commandLink></td>
 					<td>${line.product.price}</td>
 					<td>${line.quantity}</td>
 				</tr>
-			</c:forEach>
-		</table>
-	</h:form>
+				</c:forEach>
+				</tbody>
+			</table>
+			</div>
+		</div>
+	</div>
+</h:form>
 </body>
 </f:view>
 </html>
