@@ -85,3 +85,5 @@ _ _ _ _ _
 **5.** Il cliente inserisce le informazioni sul prorpio indirizzo.  
 **6.** Il Sistema mostra le informazioni sull'indirizzo inserite dal cliente.   
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il cliente può visualizzare i dati del proprio indirizzo. 
+
+![Alt text](/path/to/image.jpg)
