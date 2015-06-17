@@ -86,4 +86,6 @@ _ _ _ _ _
 **6.** Il Sistema mostra le informazioni sull'indirizzo inserite dal cliente.   
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il cliente può visualizzare i dati del proprio indirizzo. 
 
-![Alt text](/path/to/image.jpg)
+_ _ _ _ _
+#CLASS DIAGRAM    
+![Alt text](/Main.jpg)
