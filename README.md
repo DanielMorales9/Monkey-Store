@@ -36,14 +36,14 @@ _ _ _ _ _
 _Il Cliente ripete i passi 4-6 finché necessario._  
 
 _ _ _ _ _
-####Caso D'Uso UC4: Inserimento desrizione prodotto nel listino  
+####Caso D'Uso UC4: Inserimento prodotto nel listino  
 **Attore Primario:** Un Amministratore.  
 **_Scenario principale di successo:_**  
 **1.** L'Amministratore vuole inserire un nuovo prodotto nel listino.  
 **2.** L'Amministratore inserisce il suo indirizzo di posta elettronica e la sua password.  
 &nbsp;&nbsp;&nbsp;&nbsp;Il Sistema verifica la correttezza dei dati immessi, e autentica l'Amministratore.  
-**3.** L'Amministratore sceglie l'attività “**_Inserisci nuova descrizione prodotto_**".  
-**4.** L'Amministratore specifica i dettagli della nuova descrizione del prodotto da inserire nel listino.   
+**3.** L'Amministratore sceglie l'attività “**_Inserisci nuovo prodotto_**".  
+**4.** L'Amministratore specifica i dettagli del nuovo prodotto da inserire nel listino.   
 _L'Amministratore ripete il passo 4 finché necessario._  
 **5.** Il Sistema mostra i prodotti inseriti.  
 **6.** L'Amministratore conferma l'inserimento dei prodotti.  
@@ -74,23 +74,7 @@ _ _ _ _ _
 &nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi l'ordine può essere visualizzato tra gli ordini effettuati dal Cliente. 
 
 _ _ _ _ _
-####Caso D'Uso UC7: Inserisci prodotto del fornitore  
-**Attore primario:** Un Amministratore.  
-**_Scenario principale di successo:_**  
-**1.** L'Amministratore vuole inserire un prodotto.    
-**2.** L'Amministratore inserisce il suo indirizzo di posta elettronica e la sua password.  
-&nbsp;&nbsp;&nbsp;&nbsp;Il Sistema verifica la correttezza dei dati immessi, e autentica l'Amministratore.  
-**3.** L'Amministratore sceglie l'attività “**_Inserisci prodotto_**”.  
-**4.** Il Sistema mostra le descrizioni dei prodotti dello store.  
-**5.** L'Amministratore sceglie una descrizione di un prodotto.  
-**6.** Il Sistema mostra i fornitori del prodotto.  
-**7.** L'Amministratore sceglie il fornitore.  
-**8.** L'Amministratore inserisce la quantità dei prodotti forniti e conferma la fornitura.   
-&nbsp;&nbsp;&nbsp;&nbsp;Da questo momento in poi il fornitore può essere visualizzato tra le informazioni del prodotto. 
-
-
-_ _ _ _ _
-####Caso D'Uso UC8: Inserisci indirizzo del cliente  
+####Caso D'Uso UC7: Inserisci indirizzo del cliente  
 **Attore primario:** Un cliente.  
 **_Scenario principale di successo:_**  
 **1.** Il cliente vuole inserire il proprio indirizzo.    

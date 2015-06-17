@@ -48,14 +48,16 @@ public class ProductController {
 	}
 
 	public String findProduct() {
-		this.product = productFacade.findProductById(id);
+//		this.product = productFacade.findProductById(id);
+		adminSession.setProduct(productFacade.findProductById(id));
 		return "productDetailsAdmin.xhtml";
 	}
 
 	public String findProductByName() {
 		String nextPage = "";
 		try {
-			this.product = productFacade.findProductByName(name);
+			adminSession.setProduct(productFacade.findProductByName(name));
+//			this.product = productFacade.findProductByName(name);
 			nextPage = "productDetailsAdmin.xhtml";
 		} catch (Exception e) {
 			nextPage = "productNotFound";

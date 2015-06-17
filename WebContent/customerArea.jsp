@@ -94,7 +94,7 @@
 
 			<div class="tab-pane" id="products">
 				<div class="panel panel-warning">
-					<div class="panel-heading">Products Avaiable</div>
+					<div class="panel-heading">Products Available</div>
 					<table class="table table-striped">
 						<thead>
 							<tr>

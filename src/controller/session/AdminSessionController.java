@@ -17,6 +17,8 @@ public class AdminSessionController {
 
 	private Admin admin;
 	
+	private Product product;
+	
 	private List<Product> products; 
 	
 	private List<Order> ordersToProcess;
@@ -52,13 +54,21 @@ public class AdminSessionController {
 	public void setOrdersToProcess(List<Order> ordersToProcess) {
 		this.ordersToProcess = ordersToProcess;
 	}
-	
-	public void removeOrder(Long id) {
-		for (Order o : this.ordersToProcess) {
-			if (o.getId().equals(id)) {
-				this.ordersToProcess.remove(o);
-			}
-		}
+
+	public Product getProduct() {
+		return product;
 	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+//	public void removeOrder(Long id) {
+//		for (Order o : this.ordersToProcess) {
+//			if (o.getId().equals(id)) {
+//				this.ordersToProcess.remove(o);
+//			}
+//		}
+//	}
 
 }
