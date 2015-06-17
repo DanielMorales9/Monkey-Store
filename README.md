@@ -88,4 +88,4 @@ _ _ _ _ _
 
 _ _ _ _ _
 #CLASS DIAGRAM    
-![Alt text](/Main.jpg = 250x250)
+![Alt text](/Main.jpg)
