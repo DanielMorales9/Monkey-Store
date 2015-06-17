@@ -1,0 +1,490 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.7
+-- Dumped by pg_dump version 9.3.6
+-- Started on 2015-06-17 13:32:45 CEST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 179 (class 3079 OID 11756)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2012 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 170 (class 1259 OID 16484)
+-- Name: address; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE address (
+    id bigint NOT NULL,
+    city character varying(255) NOT NULL,
+    country character varying(255) NOT NULL,
+    state character varying(255) NOT NULL,
+    street character varying(255) NOT NULL,
+    zipcode character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.address OWNER TO monkey;
+
+--
+-- TOC entry 171 (class 1259 OID 16492)
+-- Name: admin; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE admin (
+    id bigint NOT NULL,
+    email character varying(255) NOT NULL,
+    firstname character varying(255) NOT NULL,
+    lastname character varying(255) NOT NULL,
+    password character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.admin OWNER TO monkey;
+
+--
+-- TOC entry 172 (class 1259 OID 16502)
+-- Name: customer; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE customer (
+    id bigint NOT NULL,
+    birthday date NOT NULL,
+    email character varying(255) NOT NULL,
+    firstname character varying(255) NOT NULL,
+    lastname character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    registrationdate timestamp without time zone NOT NULL,
+    address_id bigint
+);
+
+
+ALTER TABLE public.customer OWNER TO monkey;
+
+--
+-- TOC entry 173 (class 1259 OID 16512)
+-- Name: openjpa_sequence_table; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE openjpa_sequence_table (
+    id smallint NOT NULL,
+    sequence_value bigint
+);
+
+
+ALTER TABLE public.openjpa_sequence_table OWNER TO monkey;
+
+--
+-- TOC entry 174 (class 1259 OID 16517)
+-- Name: orderline; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE orderline (
+    id bigint NOT NULL,
+    quantity integer NOT NULL,
+    orders_id bigint,
+    product_id bigint NOT NULL
+);
+
+
+ALTER TABLE public.orderline OWNER TO monkey;
+
+--
+-- TOC entry 175 (class 1259 OID 16522)
+-- Name: orders; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE orders (
+    id bigint NOT NULL,
+    closingdate timestamp without time zone,
+    creationdate timestamp without time zone,
+    evasiondate timestamp without time zone,
+    processed boolean,
+    customer_id bigint
+);
+
+
+ALTER TABLE public.orders OWNER TO monkey;
+
+--
+-- TOC entry 176 (class 1259 OID 16527)
+-- Name: product; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE product (
+    id bigint NOT NULL,
+    code character varying(255) NOT NULL,
+    creationdate timestamp without time zone NOT NULL,
+    description character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    price real NOT NULL
+);
+
+
+ALTER TABLE public.product OWNER TO monkey;
+
+--
+-- TOC entry 177 (class 1259 OID 16535)
+-- Name: provider; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE provider (
+    id bigint NOT NULL,
+    email character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    phonenumber character varying(255) NOT NULL,
+    vatin bigint NOT NULL,
+    address_id bigint
+);
+
+
+ALTER TABLE public.provider OWNER TO monkey;
+
+--
+-- TOC entry 178 (class 1259 OID 16543)
+-- Name: provider_product; Type: TABLE; Schema: public; Owner: monkey; Tablespace: 
+--
+
+CREATE TABLE provider_product (
+    providers_id bigint,
+    products_id bigint
+);
+
+
+ALTER TABLE public.provider_product OWNER TO monkey;
+
+--
+-- TOC entry 1996 (class 0 OID 16484)
+-- Dependencies: 170
+-- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY address (id, city, country, state, street, zipcode) FROM stdin;
+1301	roma	Italia	Italy	via tespi 72	125
+\.
+
+
+--
+-- TOC entry 1997 (class 0 OID 16492)
+-- Dependencies: 171
+-- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY admin (id, email, firstname, lastname, password) FROM stdin;
+51	dnlmrls9@gmail.com	Daniel	Morales	daniel
+1001	dnlmrls9@me.com	Daniel	Morales	3EC-WM2-3qB-FSY
+1101	cristianoadmin@gmail.com	Cristiano	Coluzza	criadmin
+1102	coluzza@cristiano.it	Cristiano	Coluzza	cristiano
+1103	mar_tinelli@hotmail.it	federico	martinelli	federico
+\.
+
+
+--
+-- TOC entry 1998 (class 0 OID 16502)
+-- Dependencies: 172
+-- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY customer (id, birthday, email, firstname, lastname, password, registrationdate, address_id) FROM stdin;
+1	1993-07-09	dnlmrls9@gmail.com	Daniel	Morales	daniel	2015-06-15 13:14:18.032	\N
+951	1965-09-19	alexandrabuttner@me.com	Alexandra	Büttner	Ardnaxela	2015-06-15 18:21:40.62	\N
+952	1994-02-06	federicoalfi@gmail.com	Federico	Alfieri	vaffanculooo	2015-06-15 18:23:58.721	\N
+953	1993-05-04	Andy_93_rz@hotmail.it	Andrea	Paruzza	bravone93	2015-06-15 18:46:54.823	\N
+954	1993-07-09	dnlmrls9@me.com	Daniel	Morales	3GP-Nkh-mgK-Wdh	2015-06-15 18:55:24.119	\N
+1151	1993-05-18	cristiano@gmail.com	cristiano	coluzza	asdasd	2015-06-15 20:53:54.896	\N
+301	1994-01-03	Mar_tinelli@hotmail.it	Federico	Martinelli	federico	2015-06-15 17:00:17.852	1301
+1152	1993-09-06	Polinesia69@hotmail.it 	Gianluca 	Amati	danielfrocio	2015-06-16 19:20:09.391	\N
+1153	1993-12-25	Stefano.Meddi93@dhdhdh.com	Stefano	meddi	ciao	2015-06-17 01:00:37.814	\N
+1154	1994-01-03	mar_tinelli@hotmail.it	Federico	Martinelli	federico	2015-06-17 10:07:42.626	\N
+\.
+
+
+--
+-- TOC entry 1999 (class 0 OID 16512)
+-- Dependencies: 173
+-- Data for Name: openjpa_sequence_table; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY openjpa_sequence_table (id, sequence_value) FROM stdin;
+0	1401
+\.
+
+
+--
+-- TOC entry 2000 (class 0 OID 16517)
+-- Dependencies: 174
+-- Data for Name: orderline; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY orderline (id, quantity, orders_id, product_id) FROM stdin;
+201	8	151	101
+202	3	151	102
+401	1	351	103
+801	12	751	103
+901	1	851	102
+903	1	852	102
+904	2	852	103
+902	1	852	101
+1251	3	1201	101
+1252	4	1201	1051
+1253	3	1202	101
+1254	1	1202	1051
+1255	2	1203	101
+1256	1	1204	101
+1257	3	1204	1051
+\.
+
+
+--
+-- TOC entry 2001 (class 0 OID 16522)
+-- Dependencies: 175
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY orders (id, closingdate, creationdate, evasiondate, processed, customer_id) FROM stdin;
+151	\N	2015-06-15 13:54:57.001	2015-06-15 13:56:00.353	t	1
+851	\N	2015-06-15 18:11:10.949	\N	f	1
+852	\N	2015-06-15 18:42:58.385	\N	f	951
+351	\N	2015-06-15 17:03:38.691	2015-06-15 18:57:05.438	t	1
+751	\N	2015-06-15 18:09:15.392	2015-06-15 18:57:13.534	t	1
+1201	\N	2015-06-15 20:54:23.52	\N	f	1151
+1202	\N	2015-06-16 00:50:33.181	\N	f	301
+1203	\N	2015-06-16 19:22:09.554	\N	f	1152
+1204	\N	2015-06-17 10:08:08.627	\N	f	1154
+\.
+
+
+--
+-- TOC entry 2002 (class 0 OID 16527)
+-- Dependencies: 176
+-- Data for Name: product; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY product (id, code, creationdate, description, name, price) FROM stdin;
+101	cc	2015-06-15 13:50:52.21	bibita che eccita	Coca cola	2
+102	ff	2015-06-15 13:51:17.609	Bibita a base di arancia	Fanta	3
+103	sp	2015-06-15 13:51:41.552	bibita simile alla limonata	Sprite	1.20000005
+1051	U	2015-06-15 18:58:28.271	Uova di gallina	Uova	0.600000024
+1052	P	2015-06-15 18:59:38.933	Pancetta inglese	Pancetta	1.79999995
+1351	O458	2015-06-17 10:06:57.326	occhiali da sole rayban	Occhiali	140
+\.
+
+
+--
+-- TOC entry 2003 (class 0 OID 16535)
+-- Dependencies: 177
+-- Data for Name: provider; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY provider (id, email, name, phonenumber, vatin, address_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2004 (class 0 OID 16543)
+-- Dependencies: 178
+-- Data for Name: provider_product; Type: TABLE DATA; Schema: public; Owner: monkey
+--
+
+COPY provider_product (providers_id, products_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 1863 (class 2606 OID 16491)
+-- Name: address_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY address
+    ADD CONSTRAINT address_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1865 (class 2606 OID 16499)
+-- Name: admin_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT admin_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1869 (class 2606 OID 16509)
+-- Name: customer_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY customer
+    ADD CONSTRAINT customer_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1873 (class 2606 OID 16516)
+-- Name: openjpa_sequence_table_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY openjpa_sequence_table
+    ADD CONSTRAINT openjpa_sequence_table_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1875 (class 2606 OID 16521)
+-- Name: orderline_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1877 (class 2606 OID 16526)
+-- Name: orders_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1879 (class 2606 OID 16534)
+-- Name: product_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY product
+    ADD CONSTRAINT product_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1881 (class 2606 OID 16542)
+-- Name: provider_pkey; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY provider
+    ADD CONSTRAINT provider_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1867 (class 2606 OID 16501)
+-- Name: u_admin_email; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY admin
+    ADD CONSTRAINT u_admin_email UNIQUE (email);
+
+
+--
+-- TOC entry 1871 (class 2606 OID 16511)
+-- Name: u_customr_email; Type: CONSTRAINT; Schema: public; Owner: monkey; Tablespace: 
+--
+
+ALTER TABLE ONLY customer
+    ADD CONSTRAINT u_customr_email UNIQUE (email);
+
+
+--
+-- TOC entry 1882 (class 2606 OID 16546)
+-- Name: customer_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY customer
+    ADD CONSTRAINT customer_address_id_fkey FOREIGN KEY (address_id) REFERENCES address(id) DEFERRABLE;
+
+
+--
+-- TOC entry 1883 (class 2606 OID 16551)
+-- Name: orderline_orders_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_orders_id_fkey FOREIGN KEY (orders_id) REFERENCES orders(id) DEFERRABLE;
+
+
+--
+-- TOC entry 1884 (class 2606 OID 16556)
+-- Name: orderline_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY orderline
+    ADD CONSTRAINT orderline_product_id_fkey FOREIGN KEY (product_id) REFERENCES product(id) DEFERRABLE;
+
+
+--
+-- TOC entry 1885 (class 2606 OID 16561)
+-- Name: orders_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES customer(id) DEFERRABLE;
+
+
+--
+-- TOC entry 1886 (class 2606 OID 16566)
+-- Name: provider_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY provider
+    ADD CONSTRAINT provider_address_id_fkey FOREIGN KEY (address_id) REFERENCES address(id) DEFERRABLE;
+
+
+--
+-- TOC entry 1888 (class 2606 OID 16576)
+-- Name: provider_product_products_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY provider_product
+    ADD CONSTRAINT provider_product_products_id_fkey FOREIGN KEY (products_id) REFERENCES product(id) DEFERRABLE;
+
+
+--
+-- TOC entry 1887 (class 2606 OID 16571)
+-- Name: provider_product_providers_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: monkey
+--
+
+ALTER TABLE ONLY provider_product
+    ADD CONSTRAINT provider_product_providers_id_fkey FOREIGN KEY (providers_id) REFERENCES provider(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2011 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-06-17 13:32:59 CEST
+
+--
+-- PostgreSQL database dump complete
+--
+
